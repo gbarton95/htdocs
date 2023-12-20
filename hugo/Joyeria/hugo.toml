@@ -1,0 +1,35 @@
+baseURL = ''
+languageCode = 'es-ES'
+title = 'Joyeria'
+theme = 'hugo-PaperMod'
+
+[params]
+    ShowReadingTime = true
+    ImagenLogo = "img/jj.jpg"
+
+[menu]
+    [[menu.main]]
+        identifier = "categories"
+        name = "Categorías"
+        url = "/categories/"
+        weight = 0
+    [[menu.main]]
+        identifier = "Nosotros"
+        name = "Nosotros"
+        url = "/nosotros/"
+        weight = 0
+    [[menu.main]]
+        identifier = "Joyas"
+        name = "Joyas"
+        url = "/joyas/"
+        weight = 0
+    [[menu.main]]
+        identifier = "_index"
+        name = "Menú Principal"
+        url = "/"
+        weight = 10
+    [[menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/blog/"
+        weight = 0
