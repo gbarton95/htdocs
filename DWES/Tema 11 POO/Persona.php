@@ -52,15 +52,22 @@
         }
 
         public function calculaEdad() {
+            //"j" significa sin 0 a la izquierda, "d" con 0.
           $dia=date("j");
+            //"n" número de mes, "F" para nombre completo.
           $mes=date("n");
           $anyo=date("Y");
 
+            //con 'explode' separamos un string en elementos de array
           $vnac=explode("-",$this->fechaNacimiento);
 
+
+        //si aún no ha cumplido años, le quitaremos un año al actual:
+          //mismo mes, día anterior a cumpleaños
           if ( ($vnac[1]== $mes) && ($vnac[0] > $dia)) {
                     $anyo=($anyo-1);
                 }
+          //mes de nacimiento mayor que mes actual
           if ($vnac[1] > $mes) {
                     $anyo=($anyo-1);
                 }

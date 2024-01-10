@@ -1,0 +1,103 @@
+/********************************************************************/
+body {
+    margin: 0px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/********************************************************************/
+header {
+    display: flex;
+    height: 20%;
+    width: 100%;
+    background-color: black;
+    font-size: 1.5em;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+/********************************************************************/
+section {
+    display: flex;
+    height: 70%;
+    width: 100%;
+}
+
+/********************************************************************/
+nav {
+    height: 100%;
+    width: 20%;
+    background-color: gray;
+    padding: 10px;
+    order: 1;
+    overflow: hidden;
+}
+
+/********************************************************************/
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    order: 2;
+    overflow: scroll;
+}
+
+.contenido{
+    padding: 50px;
+}
+
+fieldset {
+    padding: 20px;
+    border: 2px solid blue;
+}
+
+/********************************************************************/
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 20%;
+    background-color: gray;
+    order: 3;
+}
+
+/********************************************************************/
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+/********************************************************************/
+
+table {
+    margin:auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    float: left;
+}
+tr {background-color:white;}
+/*tr:hover{background-color: aqua;}*/
+tr.header {background-color: aqua;}
+td,th {padding:10px; border: 1px solid black;}
+
+/********************************************************************/
+
+a{
+    text-decoration: none;
+    color: blue ;
+}
+
+.contenido h2{
+    text-align: center;
+}

@@ -15,10 +15,10 @@ require 'Persona.php';
 
     //Método 'imprimir información'
         public function printInfo() {
-            echo "El empleado {$this->nombre} {$this->apellidos} tiene un sueldo de {$this->sueldo} y por tanto ";
+            echo "{$this->nombre} {$this->apellidos}, {$this->puesto}, ";
 
             if ($this->sueldo > 2000){
-                echo "debe pagar impuestos. \n";
+                echo "sí debe pagar impuestos. \n";
             } else {
                 echo "no debe pagar impuestos. \n";
             }
