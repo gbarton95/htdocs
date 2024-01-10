@@ -49,10 +49,26 @@ main {
     padding: 50px;
 }
 
-fieldset {
-    padding: 20px;
-    border: 2px solid blue;
+fieldset.menu {
+    display: flex;
+    flex-direction: row;
+    border: none;
 }
+
+.menu div {
+    width: fit-content;
+    margin: 10px;
+}
+
+.menu div > * {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.menu input {
+    width: 100px;
+}
+
 
 /********************************************************************/
 aside {

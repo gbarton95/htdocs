@@ -13,9 +13,17 @@
     <main>
       <div class="contenido">
         <h2>Configuración del menú del día</h2>
-        <?php
-
-        ?>
+        <fieldset class="menu">
+          <div>
+            <label for="dia">Día de la semana:</label>
+            <label for="fecha">Fecha:</label>
+          </div>
+          <div>
+            <input type="text" name="dia" required>
+            <input type="fecha" name="fecha" placeholder="01/01/2000" required>
+            <input type="submit" name="startmenu" value="Diseñar menú">
+          </div>
+        </fieldset>
       </div>
     </main>
     <aside></aside>
@@ -23,3 +31,11 @@
   <footer></footer>
 </body>
 </html>
+
+<?php
+  if(!isset($_REQUEST['startmenu'])) {
+
+
+
+  }
+?>
