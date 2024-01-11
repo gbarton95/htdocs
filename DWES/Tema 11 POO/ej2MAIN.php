@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Programación Orientada a Objetos</title>
   <link rel="stylesheet" type="text/css" href="estilo.css">
+  <?php
+    //metodo para construir el menu completo
+    function obtenerMenu() {
+      return  "holo";
+    }
+  ?>
 </head>
 <body>
   <header><h1>RESTAURANTE</h1></header>
