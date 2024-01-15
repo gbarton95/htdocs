@@ -49,7 +49,7 @@ main {
     padding: 50px;
 }
 
-fieldset.menu {
+.menu {
     display: flex;
     flex-direction: row;
     border: none;
