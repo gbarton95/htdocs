@@ -6,6 +6,8 @@
   <title>Programación Orientada a Objetos</title>
   <link rel="stylesheet" type="text/css" href="estilo.css">
   <?php
+    require 'Menu.php';
+
     //metodo para construir el menu completo
     function obtenerMenu()
     {
@@ -23,9 +25,12 @@
           //declaro aquí los datos que me ha dado el usuario:
           $dia   = $_POST['dia'];
           $fecha = $_POST['fecha'];
+          $menu_usuario = new Menu($dia, $fecha);
+
 
           echo '<div class="contenido"><h2>Menú del ' . $dia . ', ' . $fecha . ' </h2>';
-          echo '<p><strong>Primeros platos</strong></p><input type="text" name="pp" size="50">';
+          echo '<label><strong>Primeros platos</strong></label><br><input type="text" name="pp" size="50"><button name="pp" value="pp" onClick="agregarPrimerPlato(' . pp . '">';
+          echo '';
           echo '<div>';
 
       } else { //si no se ha enviado el formulario, hago petición al usuario
