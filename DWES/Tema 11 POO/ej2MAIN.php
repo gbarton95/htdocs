@@ -5,15 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Programación Orientada a Objetos</title>
   <link rel="stylesheet" type="text/css" href="estilo.css">
-  <?php
-    require 'Menu.php';
-
-    //metodo para construir el menu completo
-    function obtenerMenu()
-    {
-        return  "holo";
-    }
-  ?>
 </head>
 <body>
   <header><h1>RESTAURANTE</h1></header>
@@ -21,19 +12,35 @@
     <nav></nav>
     <main>
     <?php
-      if(isset($_REQUEST['startmenu'])) {
-          //declaro aquí los datos que me ha dado el usuario:
-          $dia   = $_POST['dia'];
-          $fecha = $_POST['fecha'];
-          $menu_usuario = new Menu($dia, $fecha);
+      if(isset($_REQUEST)) { //Si se ha enviado cualquier formulario, entramos aquí
+        //No especifico 'startmenu' porque puede ser cualquiera de los submits, no sólo ese
+
+        if(isset($_REQUEST["carta"])) {
+          print '
+            <img src="abriendomenu.jpg" alt="Abriendo menú">
 
 
-          echo '<div class="contenido"><h2>Menú del ' . $dia . ', ' . $fecha . ' </h2>';
-          echo '<label><strong>Primeros platos</strong></label><br><input type="text" name="pp" size="50"><button name="pp" value="pp" onClick="agregarPrimerPlato(' . pp . '">';
-          echo '';
-          echo '<div>';
 
-      } else { //si no se ha enviado el formulario, hago petición al usuario
+            <img src="cerrandomenu.jpg" alt="Cerrando menú">
+          ';
+
+        } else {
+          //sólo queremos crear el objeto UNA vez
+          if(isset($_POST['dia'])){
+            $dia          = $_POST['dia'];
+            $fecha        = $_POST['fecha'];
+            $menu_usuario = new Menu($dia, $fecha);
+          }
+            print '<div class="contenido"><h2>Menú del ' . $dia . ', ' . $fecha . ' </h2>';
+            print '<form action="ej2MAIN.php" method="post">';
+            print '<label><strong>Primeros platos</strong></label><br><input type="text" name="pp" size="50"><input type="submit" value="Añadir" name="pp"><br>';
+            print '<label><strong>Segundos platos</strong></label><br><input type="text" name="sp" size="50"><input type="submit" value="Añadir" name="sp"><br>';
+            print '<label><strong>Postres</strong></label><br><input type="text" name="ps" size="50"><input type="submit" value="Añadir" name="ps"><br>';
+            print '<input type="submit" value="Confeccionar carta" name="carta">';
+            print '</form><div>';
+        }
+
+      } else { //si no se ha enviado el primer formulario, hago petición al usuario
           print '
           <div class="contenido">
             <h2>Configuración del menú del día</h2>
@@ -53,7 +60,8 @@
           </div>
         ';
       }
-    ?>
+
+  ?>
     </main>
     <aside></aside>
   </section>

@@ -18,12 +18,24 @@
             $this->primerosplatos[] = $plato;
         }
 
+        public function PrimerosPlatos(){
+            return $this->primerosplatos;
+        }
+
         public function agregarSegundoPlato($plato){
             $this->segundosplatos[] = $plato;
         }
 
+        public function SegundosPlatos(){
+            return $this->segundosplatos;
+        }
+
         public function agregarPostre($plato){
             $this->postres[] = $plato;
+        }
+
+        public function Postres(){
+            return $this->postres;
         }
     }
 ?>
