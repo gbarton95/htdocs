@@ -41,8 +41,10 @@ main {
     display: flex;
     flex-direction: column;
     text-align: left;
+    align-items: center;
     order: 2;
     overflow: scroll;
+    padding: 50px;
 }
 
 .contenido{
@@ -52,23 +54,25 @@ main {
 .menu {
     display: flex;
     flex-direction: row;
-    border: none;
 }
 
-.menu div {
-    width: fit-content;
-    margin: 10px;
+.col1, .col2 {
+   width: 300px;
+   margin: 20px;
 }
 
-.menu div > * {
-    display: block;
-    margin-bottom: 10px;
+.col1 ul {
+    padding-left: 25px;
+
 }
 
-.menu input {
-    width: 100px;
+.col2 fieldset{
+    margin-bottom: 30px;
 }
 
+.col2 form {
+    padding-left: 10px;
+}
 
 /********************************************************************/
 aside {
@@ -109,11 +113,30 @@ td,th {padding:10px; border: 1px solid black;}
 
 /********************************************************************/
 
-a{
+fieldset {
+    background-color: lightgray;
+    border-radius: 20px;
+    border-color: blue;
+    margin: auto;
+}
+
+legend {
+    font-weight: bold;
+}
+
+
+/********************************************************************/
+
+
+a {
     text-decoration: none;
     color: blue ;
 }
 
-.contenido h2{
+.contenido h2 {
     text-align: center;
+}
+
+.azul {
+    color: blue;
 }
