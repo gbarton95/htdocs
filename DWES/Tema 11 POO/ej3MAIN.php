@@ -1,3 +1,5 @@
+<!--Todo es un desastre y no hay por dónde cogerlo-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,13 +47,54 @@
                     include("Racional.php");
                         if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $uservariable = $_POST['operacion'];
-                            $datos = explode("+", $uservariable);
-                            $racional1 = new Racional($uservariable[0]);
-                            $racional2 = new Racional($uservariable[1]);
+                            $primernum=0; $segundonum=0; $arrayUV; $operacion= ""; $resultado = new Racional();
+                            
+                            if(str_contains($uservariable, "+")){
+                                $operacion = "+";
+                                $arrayUV = explode("+", $uservariable);
+                                $racional1= new Racional ($arrayUV[0]);
+                                $racional2= new Racional ($arrayUV[1]);
 
-                            echo $racional1 . "<br>";
-                            echo $racional2;
-                            echo "Hola";
+                                echo $racional1;
+
+                                //$resultado->sumarRacionales($racional1, $racional2);
+                                //echo $resultado->__toString();
+
+                            /*
+
+                            }else if(str_contains($uservariable, "-")){
+                                $operacion = "-";
+                                $arrayUV = explode("-", $uservariable);
+                                $primernum=$arrayUV[0];
+                                $segundonum=$arrayUV[1];
+
+
+                            }else if(str_contains($uservariable, ":")){
+                                $operacion = ":";
+                                $arrayUV = explode(":", $uservariable);
+                                $primernum=$arrayUV[0];
+                                $segundonum=$arrayUV[1];
+
+
+
+                            }else if(str_contains($uservariable, "*")){
+                                $operacion = "*";
+                                $arrayUV = explode("*", $uservariable);
+                                $primernum=$arrayUV[0];
+                                $segundonum=$arrayUV[1];
+
+
+                            }else{
+                                echo "No has introducido un formato válido de operación. ";
+                            }                  
+                            
+                            */
+
+                            if($primernum!=null ||$segundonum!=null){
+                                echo $primernum . $operacion . $segundonum . "=" ;
+                            }
+
+                        }
                         }
                     ?>
                     <br>
@@ -61,7 +104,32 @@
                     <br>
                     <?php
                         if(isset($_REQUEST)){
-
+                            print '<table>
+                            <tr class="first-row">
+                                <th>Concepto</th>
+                                <th>Valores</th>
+                            </tr>
+                            <tr>
+                                <th>Operando 1</th>
+                                <td>' . $primernum . '</td>
+                            </tr>
+                            <tr>
+                                <th>Operando 2</th>
+                                <td>' . $segundonum . '</td>
+                            </tr>
+                            <tr>
+                                <th>Operación</th>
+                                <td>' . $operacion . '</td>
+                            </tr>
+                            <tr>
+                                <th>Resultado</th>
+                                <td>' . '</td>
+                            </tr>
+                            <tr>
+                                <th>Resultado simplificado</th>
+                                <td>' . '</td>
+                            </tr>
+                            </table>';
                         }
                     ?>
                     <br>

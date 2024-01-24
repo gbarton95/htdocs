@@ -106,9 +106,13 @@ table {
     border-collapse: collapse;
     float: left;
 }
-tr {background-color:white;}
-/*tr:hover{background-color: aqua;}*/
-tr.header {background-color: aqua;}
+
+tr.first-row {
+    text-align: center;
+    color: white;
+    background-color: darkblue;
+}
+
 td,th {padding:10px; border: 1px solid black;}
 
 /********************************************************************/
