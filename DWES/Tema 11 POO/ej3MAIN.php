@@ -13,7 +13,7 @@
   <section>
     <nav></nav>
     <main>
-        <div class="menu">
+        <div class="contenedor1">
             <div class="col1">
                 <fieldset>
                     <legend>Reglas de uso de la calculadora</legend>
