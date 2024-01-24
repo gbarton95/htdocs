@@ -1,4 +1,4 @@
-<!--Todo es un desastre y no hay por dónde cogerlo-->
+<!--He hecho lo que he podido-->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -41,61 +41,55 @@
                     <form action="ej3MAIN.php" method="POST">
                         <label>Operación</label>
                         <input type="text" size="10" name="operacion">
-                        <input type="submit" value="Calcular">
+                        <input type="submit" name="mandar" value="Calcular">
                     </form>
                     <?php
                     include("Racional.php");
                         if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $uservariable = $_POST['operacion'];
-                            $primernum=0; $segundonum=0; $arrayUV; $operacion= ""; $resultado = new Racional();
-                            
+
                             if(str_contains($uservariable, "+")){
                                 $operacion = "+";
                                 $arrayUV = explode("+", $uservariable);
                                 $racional1= new Racional ($arrayUV[0]);
                                 $racional2= new Racional ($arrayUV[1]);
+                                $resultado=sumarRacionales($racional1, $racional2);
 
-                                echo $racional1;
-
-                                //$resultado->sumarRacionales($racional1, $racional2);
-                                //echo $resultado->__toString();
-
-                            /*
+                                echo "<p class='racionalresult'>" . $racional1->__toString() .  " " . $operacion .  " "  . $racional2->__toString() . " = " . $resultado . "</p>";
 
                             }else if(str_contains($uservariable, "-")){
                                 $operacion = "-";
                                 $arrayUV = explode("-", $uservariable);
-                                $primernum=$arrayUV[0];
-                                $segundonum=$arrayUV[1];
+                                $racional1= new Racional ($arrayUV[0]);
+                                $racional2= new Racional ($arrayUV[1]);
+                                $resultado=restarRacionales($racional1, $racional2);
 
+                                echo "<p class='racionalresult'>" . $racional1->__toString() . " " . $operacion .  " " . $racional2->__toString() . " = " . $resultado . "</p>";
 
                             }else if(str_contains($uservariable, ":")){
                                 $operacion = ":";
                                 $arrayUV = explode(":", $uservariable);
-                                $primernum=$arrayUV[0];
-                                $segundonum=$arrayUV[1];
+                                $racional1= new Racional ($arrayUV[0]);
+                                $racional2= new Racional ($arrayUV[1]);
+                                $resultado=dividirRacionales($racional1, $racional2);
 
-
+                                echo "<p class='racionalresult'>" . $racional1->__toString() .  " "  . $operacion .  " " . $racional2->__toString() . " = " . $resultado . "</p>";
 
                             }else if(str_contains($uservariable, "*")){
                                 $operacion = "*";
                                 $arrayUV = explode("*", $uservariable);
-                                $primernum=$arrayUV[0];
-                                $segundonum=$arrayUV[1];
+                                $racional1= new Racional ($arrayUV[0]);
+                                $racional2= new Racional ($arrayUV[1]);
+                                $resultado=multiplicarRacionales($racional1, $racional2);
 
+                                echo "<p class='racionalresult'>" . $racional1->__toString() .  " " . $operacion .  " " . $racional2->__toString() . " = " . $resultado . "</p>";
 
                             }else{
                                 echo "No has introducido un formato válido de operación. ";
-                            }                  
-                            
-                            */
-
-                            if($primernum!=null ||$segundonum!=null){
-                                echo $primernum . $operacion . $segundonum . "=" ;
                             }
 
                         }
-                        }
+
                     ?>
                     <br>
                 </fieldset>
@@ -103,7 +97,7 @@
                     <legend>Resultado</legend>
                     <br>
                     <?php
-                        if(isset($_REQUEST)){
+                        if(isset($_POST['mandar'])){
                             print '<table>
                             <tr class="first-row">
                                 <th>Concepto</th>
@@ -111,11 +105,11 @@
                             </tr>
                             <tr>
                                 <th>Operando 1</th>
-                                <td>' . $primernum . '</td>
+                                <td>' . $racional1->__toString() . '</td>
                             </tr>
                             <tr>
                                 <th>Operando 2</th>
-                                <td>' . $segundonum . '</td>
+                                <td>' . $racional2->__toString() . '</td>
                             </tr>
                             <tr>
                                 <th>Operación</th>
@@ -123,11 +117,11 @@
                             </tr>
                             <tr>
                                 <th>Resultado</th>
-                                <td>' . '</td>
+                                <td>' . $resultado . '</td>
                             </tr>
                             <tr>
                                 <th>Resultado simplificado</th>
-                                <td>' . '</td>
+                                <td>' . $resultado->simplificarRacional() . '</td>
                             </tr>
                             </table>';
                         }

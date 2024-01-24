@@ -91,6 +91,14 @@ main {
     width: 100px;
 }
 
+.racionalresult {
+    color: blue;
+    font-size: large;
+    text-align: center;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
 /********************************************************************/
 aside {
     display: flex;
