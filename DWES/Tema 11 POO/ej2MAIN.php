@@ -12,33 +12,52 @@
     <nav></nav>
     <main>
     <?php
-      if(isset($_REQUEST)) { //Si se ha enviado cualquier formulario, entramos aquí
-        //No especifico 'startmenu' porque puede ser cualquiera de los submits, no sólo ese
+    session_start();
+      if(isset($_REQUEST["startmenu"])) { 
 
-        if(isset($_REQUEST["carta"])) {
+         if(isset($_REQUEST["carta"])) {
           print '
             <img src="abriendomenu.jpg" alt="Abriendo menú">
 
-
+            //HAY QUE HACER CODIGO AQUI
 
             <img src="cerrandomenu.jpg" alt="Cerrando menú">
           ';
 
-        } else {
+        } else { 
           //sólo queremos crear el objeto UNA vez
           if(isset($_POST['dia'])){
+            include("Menu.php"); //No entiendo que tenga que incluirlo si está en la misma carpeta y es un constructor público
             $dia          = $_POST['dia'];
             $fecha        = $_POST['fecha'];
             $menu_usuario = new Menu($dia, $fecha);
-          }
+            $_SESSION['datos_menu'] = "";
+            
+          
             print '<div class="contenido"><h2>Menú del ' . $dia . ', ' . $fecha . ' </h2>';
             print '<form action="ej2MAIN.php" method="post">';
-            print '<label><strong>Primeros platos</strong></label><br><input type="text" name="pp" size="50"><input type="submit" value="Añadir" name="pp"><br>';
+            print '<label><strong>Primeros platos</strong></label><br><input type="text" name="pp" size="50">';
+            //imprimo los platos si los hay
+              if(isset($POST["pp"])){
+                //agrego plato
+                $nuevoplato = $POST['pp'];
+                $menu_usuario->agregarPrimerPlato($nuevoplato);
+                //para guardarlos todos
+                $menu_serializado = serialize($menu_usuario);
+                $_SESSION['datos_menu'] = $menu_serializado;
+                //te imprimo lo que hay
+                $menu = unserialize($_SESSION['datos_menu']);
+                $menu->getPrimerosPlatos;
+              }
+            print '<input type="submit" value="Añadir" name="pp"><br>';
             print '<label><strong>Segundos platos</strong></label><br><input type="text" name="sp" size="50"><input type="submit" value="Añadir" name="sp"><br>';
             print '<label><strong>Postres</strong></label><br><input type="text" name="ps" size="50"><input type="submit" value="Añadir" name="ps"><br>';
             print '<input type="submit" value="Confeccionar carta" name="carta">';
             print '</form><div>';
+
+            
         }
+      }
 
       } else { //si no se ha enviado el primer formulario, hago petición al usuario
           print '

@@ -38,12 +38,20 @@
                     <br>
                     <form action="ej3MAIN.php" method="POST">
                         <label>Operación</label>
-                        <input type="text" size="10">
+                        <input type="text" size="10" name="operacion">
                         <input type="submit" value="Calcular">
                     </form>
                     <?php
-                        if(isset($_REQUEST)){
-                            echo '';
+                    include("Racional.php");
+                        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                            $uservariable = $_POST['operacion'];
+                            $datos = explode("+", $uservariable);
+                            $racional1 = new Racional($uservariable[0]);
+                            $racional2 = new Racional($uservariable[1]);
+
+                            echo $racional1 . "<br>";
+                            echo $racional2;
+                            echo "Hola";
                         }
                     ?>
                     <br>

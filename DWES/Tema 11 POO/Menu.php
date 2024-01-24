@@ -18,7 +18,7 @@
             $this->primerosplatos[] = $plato;
         }
 
-        public function PrimerosPlatos(){
+        public function getPrimerosPlatos(){
             return $this->primerosplatos;
         }
 
