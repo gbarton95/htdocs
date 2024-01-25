@@ -14,8 +14,6 @@
 		    echo "El radio elegido es $radio.<br/>";
             echo "La longitud de la circunferencia es ".round($longitud,2).".<br/>";
             echo "El área del círculo es ".round($area,2).".<br/>";
-			
-			echo '<a href="ejer2form.html"><br/><br/>Introducir otro radio</a>';
 		}
 		else
 		{
@@ -26,6 +24,6 @@
 			</form>';
 		}
 		?>
-		
+		<a href="ejer2form.html"><br/><br/>Introducir otro radio</a>
 	</body>
 </html>

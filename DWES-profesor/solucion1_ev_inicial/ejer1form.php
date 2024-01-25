@@ -14,7 +14,7 @@
                     if ($entero % 2 == 0) {
 						echo $entero, " es par.";
                     } else {
-                        echo $entero, " es imparrrrrrrrr.";
+                        echo $entero, " es impar.";
                     }
                 }
             } else {

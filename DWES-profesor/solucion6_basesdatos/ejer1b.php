@@ -9,12 +9,13 @@
 <body>
 <?php
 	$conexion = mysqli_connect ("localhost", "jardinero", "jardinero") or die ("No se puede conectar con el servidor");
-	mysqli_select_db ($conexion,"jardineria") or die ("No se puede seleccionarc la BD");
+	mysqli_select_db ($conexion,"jardineria") or die ("No se puede seleccionarc la BD");;
 	$consulta = mysqli_query ($conexion,"SELECT * from clientes") or die ("Fallo en la consulta");
 
 	echo '<table border=1>';
 	//PARA SACAR LA CABECERA CON LOS NOMBRES DE LOS CAMPOS:
 	//Con funciones de mysqli: mysqli_fetch_field
+	//Con funciones mysql se haría con: mysql_field_name;
 	echo "<tr>";
 	while ($finfo = mysqli_fetch_field($consulta)) {
 			$nombrecampo=$finfo->name; /*Obtenemos el nombre de cada campo;*/

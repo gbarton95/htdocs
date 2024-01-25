@@ -17,7 +17,6 @@
 				$nombre = $_GET["nombre"];
 				$apellidos = $_GET["apellidos"];
 				print "<p>Bienvenido, $nombre $apellidos.</p>";
-				//¿Por qué si está pulsado Y es ="a"? ¿No valdría con una de las dos condiciones? Also, comillas??
 				if (isset($_GET['pregunta1']) && $_GET["pregunta1"] == "a") {
 					print "<p>Respuesta a pregunta 1 correcta.</p>";
 				} else {
