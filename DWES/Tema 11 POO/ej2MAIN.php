@@ -13,7 +13,13 @@
     <main>
     <?php
     session_start();
-      if(isset($_REQUEST["startmenu"])) { 
+    include("Menu.php");
+
+
+
+      if(isset($_REQUEST["startmenu"]) || $_SESSION['datos_menu']!="") { 
+
+        var_dump($_SESSION['datos_menu']);
 
          if(isset($_REQUEST["carta"])) {
           print '
@@ -25,15 +31,20 @@
           ';
 
         } else { 
-          //sólo queremos crear el objeto UNA vez
+
+          //sólo queremos crear el objeto UNA vez, así que:
+          $dia; $fecha;
           if(isset($_POST['dia'])){
-            include("Menu.php"); //No entiendo que tenga que incluirlo si está en la misma carpeta y es un constructor público
             $dia          = $_POST['dia'];
             $fecha        = $_POST['fecha'];
             $menu_usuario = new Menu($dia, $fecha);
-            $_SESSION['datos_menu'] = "";
-            
+          }
           
+          $menu_usuario = serialize($_SESSION['datos_menu']);
+          $dia=$menu_usuario->getDia();
+          $fecha=$menu_usuario->getFecha();
+
+
             print '<div class="contenido"><h2>Menú del ' . $dia . ', ' . $fecha . ' </h2>';
             print '<form action="ej2MAIN.php" method="post">';
             print '<label><strong>Primeros platos</strong></label><br><input type="text" name="pp" size="50">';
@@ -57,7 +68,6 @@
 
             
         }
-      }
 
       } else { //si no se ha enviado el primer formulario, hago petición al usuario
           print '
