@@ -15,11 +15,7 @@
     session_start();
     include("Menu.php");
 
-
-
-      if(isset($_REQUEST["startmenu"]) || $_SESSION['datos_menu']!="") { 
-
-        var_dump($_SESSION['datos_menu']);
+      if(isset($_REQUEST["startmenu"])) { 
 
          if(isset($_REQUEST["carta"])) {
           print '
@@ -38,9 +34,12 @@
             $dia          = $_POST['dia'];
             $fecha        = $_POST['fecha'];
             $menu_usuario = new Menu($dia, $fecha);
+            $_SESSION['datos_menu'] = serialize($menu_usuario);
           }
           
-          $menu_usuario = serialize($_SESSION['datos_menu']);
+          //var_dump($_SESSION['datos_menu']);
+
+          $menu_usuario = unserialize($_SESSION['datos_menu']);
           $dia=$menu_usuario->getDia();
           $fecha=$menu_usuario->getFecha();
 
@@ -54,8 +53,7 @@
                 $nuevoplato = $POST['pp'];
                 $menu_usuario->agregarPrimerPlato($nuevoplato);
                 //para guardarlos todos
-                $menu_serializado = serialize($menu_usuario);
-                $_SESSION['datos_menu'] = $menu_serializado;
+                $_SESSION['datos_menu'] = serialize($menu_usuario);
                 //te imprimo lo que hay
                 $menu = unserialize($_SESSION['datos_menu']);
                 $menu->getPrimerosPlatos;
