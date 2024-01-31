@@ -14,6 +14,14 @@
         }
 
         //metodos
+        public function getDia(){
+            return $this->dia;
+        }
+
+        public function getFecha(){
+            return $this->fecha;
+        }
+
         public function agregarPrimerPlato($plato){
             $this->primerosplatos[] = $plato;
         }
