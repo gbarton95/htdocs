@@ -15,28 +15,30 @@
     session_start();
     include("Menu.php");
 
-      if(isset($_REQUEST["startmenu"])) { 
+    //Hay que estructurarlo poniendo que si NO hay un REQUEST, entre en la primera página, pero que si hay un request entre en la segunda directamente.
 
-         if(isset($_REQUEST["carta"])) {
-          print '
-            <img src="abriendomenu.jpg" alt="Abriendo menú">
 
-            //HAY QUE HACER CODIGO AQUI
+    if(isset($_REQUEST["carta"])) {
+      print '
+        <img src="abriendomenu.jpg" alt="Abriendo menú">
 
-            <img src="cerrandomenu.jpg" alt="Cerrando menú">
-          ';
+        //HAY QUE HACER CODIGO AQUI
 
-        } else { 
+        <img src="cerrandomenu.jpg" alt="Cerrando menú">
+      ';
+
+    } else {
+
+      if(isset($_REQUEST["startmenu"])) {
 
           //sólo queremos crear el objeto UNA vez, así que:
-          $dia; $fecha;
           if(isset($_POST['dia'])){
             $dia          = $_POST['dia'];
             $fecha        = $_POST['fecha'];
             $menu_usuario = new Menu($dia, $fecha);
             $_SESSION['datos_menu'] = serialize($menu_usuario);
           }
-          
+
           //var_dump($_SESSION['datos_menu']);
 
           $menu_usuario = unserialize($_SESSION['datos_menu']);
@@ -64,10 +66,8 @@
             print '<input type="submit" value="Confeccionar carta" name="carta">';
             print '</form><div>';
 
-            
-        }
 
-      } else { //si no se ha enviado el primer formulario, hago petición al usuario
+        } else { //si no se ha enviado el primer formulario, hago petición al usuario
           print '
           <div class="contenido">
             <h2>Configuración del menú del día</h2>
@@ -87,6 +87,8 @@
           </div>
         ';
       }
+
+    }
 
   ?>
     </main>
