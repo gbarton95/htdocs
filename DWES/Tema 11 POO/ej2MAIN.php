@@ -15,88 +15,143 @@
     session_start();
     include("Menu.php");
 
-    //Hay que estructurarlo poniendo que si NO hay un REQUEST, entre en la primera página, pero que si hay un request entre en la segunda directamente.
+    
+    if($_SERVER["REQUEST_METHOD"] != "POST"){
+    print '
+      <div class="contenido">
+        <h2>Configuración del menú del día</h2>
+        <form action="ej2MAIN.php" method="POST">
+          <fieldset class="menu">
+            <div>
+              <label for="dia">Día de la semana:</label>
+              <label for="fecha">Fecha:</label>
+            </div>
+            <div>
+              <input type="text" name="dia" placeholder="Lunes, martes..." required>
+              <input type="fecha" name="fecha" placeholder="01/01/2000" required>
+              <input type="submit" name="startmenu" value="Diseñar menú">
+            </div>
+          </fieldset>
+        </form>
+      </div>';
 
-
-    if(isset($_REQUEST["carta"])) {
-      print '
-        <img src="abriendomenu.jpg" alt="Abriendo menú">
-
-        //HAY QUE HACER CODIGO AQUI
-
-        <img src="cerrandomenu.jpg" alt="Cerrando menú">
-      ';
-
-    } else {
-
+    } else if(!isset($_REQUEST["carta"])){
       if(isset($_REQUEST["startmenu"])) {
-
-          //sólo queremos crear el objeto UNA vez, así que:
-          if(isset($_POST['dia'])){
+          //sólo queremos crear el objeto UNA vez, así que: 
             $dia          = $_POST['dia'];
             $fecha        = $_POST['fecha'];
             $menu_usuario = new Menu($dia, $fecha);
             $_SESSION['datos_menu'] = serialize($menu_usuario);
           }
 
-          //var_dump($_SESSION['datos_menu']);
-
           $menu_usuario = unserialize($_SESSION['datos_menu']);
           $dia=$menu_usuario->getDia();
           $fecha=$menu_usuario->getFecha();
 
-
             print '<div class="contenido"><h2>Menú del ' . $dia . ', ' . $fecha . ' </h2>';
             print '<form action="ej2MAIN.php" method="post">';
-            print '<label><strong>Primeros platos</strong></label><br><input type="text" name="pp" size="50">';
-            //imprimo los platos si los hay
-              if(isset($POST["pp"])){
+
+            //PRIMEROS PLATOS
+            print '<label><strong>Primeros platos</strong></label><br>';
+              if(isset($_POST["b1"]) && $_POST['pp'] != ""){
+                  //agrego plato
+                  $nuevoplato = $_POST['pp'];
+                  $menu_usuario->agregarPrimerPlato($nuevoplato);
+                  //para guardarlos todos
+                  $_SESSION['datos_menu'] = serialize($menu_usuario);
+                }
+              
+              if(!empty($menu_usuario)){
+                    $primplatos = $menu_usuario->getPrimerosPlatos();
+                    foreach($primplatos as $plato){
+                      echo $plato . "<br>";
+                    }
+                  }
+            print '<input type="text" name="pp" size="50">';
+            print '<input type="submit" value="Añadir" name="b1"><br>';
+
+            //SEGUNDOS PLATOS
+            print '<label><strong>Segundos platos</strong></label><br>';
+              if(isset($_POST["b2"]) && $_POST['sp'] != ""){
                 //agrego plato
-                $nuevoplato = $POST['pp'];
-                $menu_usuario->agregarPrimerPlato($nuevoplato);
+                $nuevoplato = $_POST['sp'];
+                $menu_usuario->agregarSegundoPlato($nuevoplato);
                 //para guardarlos todos
                 $_SESSION['datos_menu'] = serialize($menu_usuario);
-                //te imprimo lo que hay
-                $menu = unserialize($_SESSION['datos_menu']);
-                $menu->getPrimerosPlatos;
               }
-            print '<input type="submit" value="Añadir" name="pp"><br>';
-            print '<label><strong>Segundos platos</strong></label><br><input type="text" name="sp" size="50"><input type="submit" value="Añadir" name="sp"><br>';
-            print '<label><strong>Postres</strong></label><br><input type="text" name="ps" size="50"><input type="submit" value="Añadir" name="ps"><br>';
+            
+              if(!empty($menu_usuario)){
+                  $segplatos = $menu_usuario->getSegundosPlatos();
+                  foreach($segplatos as $plato){
+                    echo $plato . "<br>";
+                  }
+                }
+            print '<input type="text" name="sp" size="50">';
+            print '<input type="submit" value="Añadir" name="b2"><br>';
+
+            //POSTRES
+            print '<label><strong>Postres</strong></label><br>';
+              if(isset($_POST["b3"]) && $_POST['ps'] != ""){
+                //agrego plato
+                $nuevoplato = $_POST['ps'];
+                $menu_usuario->agregarPostre($nuevoplato);
+                //para guardarlos todos
+                $_SESSION['datos_menu'] = serialize($menu_usuario);
+              }
+            
+              if(!empty($menu_usuario)){
+                  $postres = $menu_usuario->getPostres();
+                  foreach($postres as $plato){
+                    echo $plato . "<br>";
+                  }
+                }
+            print '<input type="text" name="ps" size="50">';
+            print '<input type="submit" value="Añadir" name="b3"><br>';
+
             print '<input type="submit" value="Confeccionar carta" name="carta">';
             print '</form><div>';
 
-
-        } else { //si no se ha enviado el primer formulario, hago petición al usuario
-          print '
-          <div class="contenido">
-            <h2>Configuración del menú del día</h2>
-            <form action="ej2MAIN.php" method="POST">
-              <fieldset class="menu">
-                <div>
-                  <label for="dia">Día de la semana:</label>
-                  <label for="fecha">Fecha:</label>
-                </div>
-                <div>
-                  <input type="text" name="dia" placeholder="Lunes, martes..." required>
-                  <input type="fecha" name="fecha" placeholder="01/01/2000" required>
-                  <input type="submit" name="startmenu" value="Diseñar menú">
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        ';
-      }
-
+    } else {
+      $menu_usuario = unserialize($_SESSION['datos_menu']);
+      
+          print '<img src="separador1.jpg" alt="Abriendo menú">';
+          print '<h2>Menú del día</h2>';
+          print '<h3 class="noMT">' . $menu_usuario->getDia() . ", " . $menu_usuario->getFecha() . '</h3>';
+          print '<div class="centrado">';
+              if(empty($menu_usuario)){
+                echo "No hay carta confeccionada";
+              } else {
+                if($menu_usuario->getPrimerosPlatos()!= null){
+                  print '<h3>Primeros Platos</h3>';
+                  $primplatos = $menu_usuario->getPrimerosPlatos();
+                  foreach($primplatos as $plato){
+                    echo $plato . "<br>";
+                  }
+                }                
+                if($menu_usuario->getSegundosPlatos()!= null){
+                  print '<h3>Segundos Platos</h3>';
+                  $segplatos = $menu_usuario->getSegundosPlatos();
+                  foreach($segplatos as $plato){
+                    echo $plato . "<br>";
+                  }
+                }
+                if($menu_usuario->getPostres()!= null){
+                  print '<h3>Postres</h3>';
+                  $postres = $menu_usuario->getPostres();
+                  foreach($postres as $plato){
+                    echo $plato . "<br>";
+                  }
+                }
+              }
+              print '</div>';
+          print '<img src="separador2.jpg" alt="Cerrando menú">';
+  
     }
-
-  ?>
+            
+    ?>
     </main>
     <aside></aside>
   </section>
   <footer></footer>
 </body>
 </html>
-
-
-
