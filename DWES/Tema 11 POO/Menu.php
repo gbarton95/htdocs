@@ -34,7 +34,7 @@
             $this->segundosplatos[] = $plato;
         }
 
-        public function SegundosPlatos(){
+        public function getSegundosPlatos(){
             return $this->segundosplatos;
         }
 
@@ -42,7 +42,7 @@
             $this->postres[] = $plato;
         }
 
-        public function Postres(){
+        public function getPostres(){
             return $this->postres;
         }
     }

@@ -47,6 +47,15 @@ main {
     padding: 50px;
 }
 
+.noMT {
+    margin: 0;
+    color: gray;
+}
+
+.centrado {
+    text-align: center;
+}
+
 .contenido{
     padding: 50px;
 }
