@@ -9,7 +9,7 @@ class ClientsController
     public function showAll()
     {
         $data['clients'] = Clients::getAll();
-        View::show("showAllClients", $data);
+        View::show("showAllClients", $data); //en realidad, $data['clients']
     }
 
     // Añadir a partir de aquí un método por cada posible valor de la variable "action"
