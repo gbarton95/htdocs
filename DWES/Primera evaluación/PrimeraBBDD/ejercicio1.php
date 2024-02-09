@@ -54,7 +54,7 @@
           }
           //ahora metemos cada resultado en su sitio:
           for ($i = 0; $i < $nfilas; $i++) {
-              $resultado = mysqli_fetch_array($resulconsulta);
+              $resultado = mysqli_fetch_array($resulconsulta); //ESTE ES EL MÉTODO QUE VAS A USAR PARA RECUPERAR DATOS!!!!
               print "<TR>";
               print "<TD>" . $resultado['CodigoCliente'] . "</TD>";
               print "<TD>" . $resultado['NombreCliente'] . "</TD>";
