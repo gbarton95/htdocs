@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class HolaController extends Controller
 {
-    // Controlador
-    public function __invoke()
-    {
-        return "Hola, señores";
+    public function __invoke(){
+        return "Hola, gentuza";
     }
-
-    public function show($nombre) {
+    
+    public function show($nombre){
         $data['nombre'] = $nombre;
         return view('hola', $data);
     }
-
 }

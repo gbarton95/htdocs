@@ -18,5 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hola', HolaController::class);
+Route::get('/hola/{variable}', 'HolaController@show');
 
+Route::resource('usuarios', 'UserController');
