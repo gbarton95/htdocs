@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\HolaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hola/{variable}', 'HolaController@show');
-
-Route::resource('usuarios', 'UserController');
-
-Route::post('/hola', 'HolaController@show');
+Route::get('/pp', 'EjemploController@primeraPagina');
