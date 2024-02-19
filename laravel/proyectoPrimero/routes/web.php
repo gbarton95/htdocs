@@ -23,3 +23,7 @@ Route::get('/hola/{variable}', 'HolaController@show');
 Route::resource('usuarios', 'UserController');
 
 Route::post('/hola', 'HolaController@show');
+
+Route::get('/contacto', 'HolaController@contactar');
+
+Route::get('/galeria', 'HolaController@galeria');
