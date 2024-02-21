@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id(''); //$table->bigIncrements('id')->index();
             $table->string('name');
             $table->string('surname');
+            $table->unsignedBigInteger('movie_id');//WHY?
             $table->timestamps();
-            //FALTA DE ACABAR
+
+            //$table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
+
         });
     }
 
