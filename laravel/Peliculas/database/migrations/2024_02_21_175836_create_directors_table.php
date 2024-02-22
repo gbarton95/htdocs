@@ -12,14 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('directors', function (Blueprint $table) {
-            $table->id(''); //$table->bigIncrements('id')->index();
+            $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->unsignedBigInteger('movie_id');//WHY?
+            $table->unsignedBigInteger('movie_id');
             $table->timestamps();
-
-            //$table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
-
         });
     }
 
