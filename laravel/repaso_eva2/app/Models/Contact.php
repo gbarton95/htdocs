@@ -12,4 +12,8 @@ class Contact extends Model
     public function supplier() {
         return $this->belongsTo('App\Models\Supplier');
     }
+
+    public function employee(){
+        return $this->belongsTo('App\Models\Employee');
+    }
 }
