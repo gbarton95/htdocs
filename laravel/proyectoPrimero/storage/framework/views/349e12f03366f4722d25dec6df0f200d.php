@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\laravel\proyectoPrimero\resources\views/layouts/navegadorBoot.blade.php ENDPATH**/ ?>
