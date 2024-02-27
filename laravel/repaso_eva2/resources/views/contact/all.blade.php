@@ -9,14 +9,15 @@
 @section("content")
     <table class='sinbordes'>
         <tr>
-            <th>Nombre</th><th>Apellidos</th><th>Correo electrónico</th><th>Teléfono</th><th class='sinbordes'></th><th class='sinbordes'></th>
+            <th>Nombre</th><th>Apellidos</th><th>Correo electrónico</th><th>Teléfono</th><th>Empleado de ventas</th><th class='sinbordes'></th><th class='sinbordes'></th>
         </tr>
     @foreach ($contactList as $contact)
         <tr>
             <td>{{$contact->name}}</td>
             <td>{{$contact->surname}}</td>
             <td>{{$contact->email}}</td>
-            <td class='derecha'>{{$contact->phone_number}}</td>
+            <td>{{$contact->phone_number}}</td>
+            <td>{{$contact->employee->name . ' ' . $contact->employee->surname}}</td>
             <td class='sinbordes centrado'>
                 <a href="{{route('contact.edit', $contact->id)}}">Modificar</a>
             </td>

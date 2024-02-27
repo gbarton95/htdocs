@@ -26,7 +26,7 @@ class EmployeeController extends Controller
         $p->department = $r->department;
         $p->functions = $r->functions;
         $p->save();
-        return redirect()->route('employee.index'); //->view(employee.all)??
+        return redirect()->route('employee.index'); //Nos manda a la función index
     }
 
     public function show(string $id)
@@ -53,9 +53,6 @@ class EmployeeController extends Controller
         return redirect()->route('employee.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $p = Employee::find($id);

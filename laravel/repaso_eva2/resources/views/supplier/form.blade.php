@@ -23,15 +23,15 @@
                 </tr>
                 <tr>
                     <td class='sinbordes'>Dirección:</td>
-                    <td class='sinbordes'><input type="text" name="description" value="{{ $supplier->address ?? '' }}" required></td>
+                    <td class='sinbordes'><input type="text" name="address" value="{{ $supplier->address ?? '' }}" required></td>
                 </tr>
                 <tr>
                     <td class='sinbordes'>Ciudad:</td>
-                    <td class='sinbordes'><input type="text" name="price" value="{{ $supplier->city ?? '' }}" required></td>
+                    <td class='sinbordes'><input type="text" name="city" value="{{ $supplier->city ?? '' }}" required></td>
                 </tr>
                 <tr>
                     <td class='sinbordes'>País:</td>
-                    <td class='sinbordes'><input type="text" name="stock" value="{{ $supplier->country ?? '' }}" required></td>
+                    <td class='sinbordes'><input type="text" name="country" value="{{ $supplier->country ?? '' }}" required></td>
                 </tr>
                 <tr>
                     <td class='sinbordes'>Contacto:</td>

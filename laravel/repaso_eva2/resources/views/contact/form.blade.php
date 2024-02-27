@@ -23,15 +23,29 @@
             </tr>
             <tr>
                 <td class='sinbordes'>Apellidos:</td>
-                <td class='sinbordes'><input type="text" name="description" value="{{ $contact->surname ?? '' }}" required></td>
+                <td class='sinbordes'><input type="text" name="surname" value="{{ $contact->surname ?? '' }}" required></td>
             </tr>
             <tr>
                 <td class='sinbordes'>Correo electrónico:</td>
-                <td class='sinbordes'><input type="text" name="price" value="{{ $contact->email ?? '' }}" required></td>
+                <td class='sinbordes'><input type="text" name="email" value="{{ $contact->email ?? '' }}" required></td>
             </tr>
             <tr>
                 <td class='sinbordes'>Teléfono:</td>
-                <td class='sinbordes'><input type="text" name="stock" value="{{ $contact->phone_number ?? '' }}" required></td>
+                <td class='sinbordes'><input type="text" name="phone_number" value="{{ $contact->phone_number ?? '' }}" required></td>
+            </tr>
+            <tr>
+                <td class='sinbordes'>Empleado de ventas:</td>
+                <td class='sinbordes'>
+                    <select name="employee_id">
+                        @foreach($employees as $employee)
+                            <option value="{{ $employee->id }}"
+                                @if( $employee->id == ($contact->employee_id ?? ""))
+                                    selected
+                                @endif
+                            >{{ $employee->name }}</option>
+                        @endforeach
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td class='sinbordes'>Empresa:</td>

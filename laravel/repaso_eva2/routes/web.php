@@ -23,7 +23,18 @@ Route::get('product/{product}/edit', 'ProductController@edit')->name('product.ed
 Route::patch('product/{product}', 'ProductController@update')->name('product.update');
 Route::delete('product/{product}', 'ProductController@destroy')->name('product.destroy');
 
+Route::get('employee', 'EmployeeController@index')->name('employee.index');
+Route::get('employee/id={employee?}', 'EmployeeController@show')->name('employee.show');
+Route::get('employee/create', 'EmployeeController@create')->name('employee.create');
+Route::post('employee/{employee?}', 'EmployeeController@store')->name('employee.store');
+Route::get('employee/{employee}/edit', 'EmployeeController@edit')->name('employee.edit');
+Route::patch('employee/{employee}', 'EmployeeController@update')->name('employee.update');
+Route::delete('employee/{employee}', 'EmployeeController@destroy')->name('employee.destroy');
+
 Route::get('supplier/products', 'SupplierController@products')->name('supplier.products');
+
+Route::get('order', 'OrderController@pide')->name('order.pide');
+Route::get('order/pedido', 'OrderController@pedido')->name('order.pedido');
 
 Route::resource('supplier', 'SupplierController');
 Route::resource('contact', 'ContactController');
