@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index() {
         $productList = Product::all();
-        return view('product.all', ['productList'=>$productList]);
+        return view('product.all', ['productList'=>$productList]); //te manda la vista a la subcarpeta product.all dentro de la carpeta views, por eso podemos invocar este array asociativo desde allí
     }
 
     public function show($id) {
