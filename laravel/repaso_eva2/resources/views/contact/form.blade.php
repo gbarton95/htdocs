@@ -42,7 +42,7 @@
                                 @if( $employee->id == ($contact->employee_id ?? ""))
                                     selected
                                 @endif
-                            >{{ $employee->name }}</option>
+                            >{{ $employee->name }} {{ $employee->surname }}</option>
                         @endforeach
                     </select>
                 </td>
