@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MovieController@index')->name("index"); 
+Route::get('pelicula/{id}','MovieController@show')->name("cartelPeli"); /*Llamaremos a la ruta por su name*/
+Route::get('novedades', 'MovieController@novedades')->name("new");
+Route::get('proximos_estrenos', 'MovieController@estrenos')->name("estrenos");
+
+Route::get(' ', 'MovieController@titulo')->name("");

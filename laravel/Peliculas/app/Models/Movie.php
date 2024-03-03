@@ -12,13 +12,25 @@ class Movie extends Model
 
     /*
     public function modelo {
-        $this->belongsTo(Modelo::class);
+        $this->hasOne/hasMany/belongsTo(Modelo::class);
+    }
+    */
+
+    public function director(){
+        return $this->hasOne(Director::class);
+       /* también podría ser? en vez de la ruta pongo el modelo. Si no como en las siguientes: */
     }
 
-    */
-    public function director()
-    {
-        return $this->belongsTo('\App');//aquí
+    public function leadActor(){
+        return $this->hasOne('App\Models\LeadActor',"movie_id","id");
+    }
+
+    public function writers(){
+        return $this->hasMany('App\Models\Writer',"movie_id","id");
+    }
+
+    public function genre(){
+        return $this->belongsTo('App\Models\Genre');
     }
 
 }
