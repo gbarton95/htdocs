@@ -7,20 +7,14 @@
 @section('main_title', 'Carrito de la compra')
 
 @section('content')
-    @isset($product)
-        <br><br>
-        <form action="{{ route('product.update', ['product' => $product->id]) }}" method="POST">
-            @method('PATCH')
-    @else
-        <form action="{{ route('product.store') }}" method="POST">
-    @endisset
+        <form action="{{ route('order.pedido') }}" method="GET">
             @csrf
             <br>
             <table class='sinbordes'>
                 <tr>
                     <td class='sinbordes'>Empleado solicitante:</td>
                     <td class='sinbordes'>
-                        <select name="empleado_id">
+                        <select name="employee_id">
                             @foreach($employees as $employee)
                                 <option value="{{ $employee->id }}">{{ $employee->name . ' ' . $employee->surname }}</option>
                             @endforeach
@@ -31,7 +25,7 @@
                     <td class='sinbordes'>Producto solicitado:</td>
                         <td class='sinbordes'>
                     @foreach($products as $product)
-                        <input type="radio" name="opcion" value="{{ $product->id }}">{{ $product->name }}</input><br>
+                        <input type="radio" name="product_id" value="{{ $product->id }}">{{ $product->name }}</input><br>
                     @endforeach
                         </td>
                 </tr>

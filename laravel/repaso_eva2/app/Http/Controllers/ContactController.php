@@ -25,6 +25,8 @@ class ContactController extends Controller
     public function create() {
         $suppliers = Supplier::all();
         $employees = DB::table('employees')->where('DEPARTMENT', '=', 'COMPRAS')->get(); //EJEMPLO DE QUERY
+        //Con Eloquent también se puede hacer:
+        // $employees = Employee::where('DEPARTMENT', '=', 'COMPRAS');
         return view('contact.form', array('suppliers' => $suppliers, 'employees' => $employees));
         //return view('contact.form', array('employees' => $employees) , array('suppliers' => $suppliers)); Y esto así?
     }
