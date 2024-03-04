@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use Illuminate\Support\Facades\DB;
@@ -10,8 +11,10 @@ class MovieController extends Controller
 {
     public function index()
     {
+        $generos = Genre::all();
         $movies = Movie::all();
-        return view('index', ['Movies'=>$movies]);
+        $titulo = "CATÁLOGO DE PELÍCULAS";
+        return view('index', ['Movies'=>$movies, 'Generos'=>$generos, 'titulo'=>$titulo]);
     }
 
 
@@ -40,7 +43,8 @@ class MovieController extends Controller
                           ->where('release_date', '>', '2024-01-01')
                           ->where('release_date', '<', date('Y-m-d')) /* Mira el uso de la fecha actual y el formato */
                           ->get();
-        return view('index', ['Movies'=>$novedades]);
+        $titulo = "ÚLTIMAS NOVEDADES";
+        return view('index', ['Movies'=>$novedades, 'titulo'=>$titulo]);
     }
 
     public function estrenos()
@@ -48,16 +52,54 @@ class MovieController extends Controller
         $estrenos = DB::table('movies')
                           ->where('release_date', '>', date('Y-m-d')) 
                           ->get();
-        return view('index', ['Movies'=>$estrenos]);
+        $titulo = "PRÓXIMOS ESTRENOS";
+        return view('index', ['Movies'=>$estrenos, 'titulo'=>$titulo]);
     }
 
-    public function titulo($busqueda)
+    public function genero(Request $submiteado)
     {
-        $title = '%' . $busqueda . '%';
-        $listaPeliculas = DB::table('movies')
-                          ->where('title', 'LIKE', $title)
+        $idGenero = $submiteado->genero;
+        $generoPelis = DB::table('movies')
+                        ->where('genre_id', 'LIKE', $idGenero)
+                        ->get();
+        $titulo = "CATALOGO DE PELÍCULAS"; //Si en vez del id hubiera pasado el nombre por request, podría haberlo incluido en el título
+        return view('index', ['Movies'=>$generoPelis, 'titulo'=>$titulo]);
+    }
+
+    public function titulo(Request $busqueda)
+    {
+        $title = $busqueda->input('titulillo'); /* Sacamos del request el input a través del name */
+        $listaPeliculas = DB::table('movies') /* Listado de peliculas con el nombre parecido al titulillo */
+                          ->where('title', 'LIKE', '%'.$title.'%')
                           ->get();
-        return view('index', ['listaPeliculas'=>$listaPeliculas]);
+        $titulo = "Búsqueda: " . $title ;
+        return view('index', ['Movies'=>$listaPeliculas, 'titulo'=>$titulo]);
+    }
+
+    public function director(Request $busqueda)
+    {
+        /* Aquí tenemos la complicación de que el director no está en la tabla movies, sino en directors.
+            Obtendremos los ids que coincidan y los buscaremos en el listado de peliculas luego. 
+            También podríamos hacer un join y sacar de una sola tabla las peliculas que tengan directores
+            cuyo nombre o apellido coincidan. */
+        $director = $busqueda->input('directorcillo');
+        $posiblesdirectores = DB::table('directors')
+                          ->where('name', 'LIKE', '%'.$director.'%')
+                          ->orWhere('surname', 'LIKE', '%'.$director.'%')
+                          ->pluck('id'); /* PLUCK para extraer una lista de valores de una única columna  */
+
+        $listaPeliculas = DB::table('movies')
+        ->whereIn('director_id', $posiblesdirectores) /* donde en director_id pueda haber cualquiera de los $posiblesdirectores */
+        ->get();
+        $titulo = "Búsqueda: " . $director ;
+        return view('index', ['Movies'=>$listaPeliculas, 'titulo'=>$titulo]);
+
+        /* También podría haber hecho:
+        
+        Si es muy lioso, utiliza el db:raw
+        $listaPeliculas = DB::raw('sentencia-SQL');
+
+        */
     }
 
 }

@@ -17,5 +17,6 @@ Route::get('/', 'MovieController@index')->name("index");
 Route::get('pelicula/{id}','MovieController@show')->name("cartelPeli"); /*Llamaremos a la ruta por su name*/
 Route::get('novedades', 'MovieController@novedades')->name("new");
 Route::get('proximos_estrenos', 'MovieController@estrenos')->name("estrenos");
-
-Route::get(' ', 'MovieController@titulo')->name("");
+Route::get('genero', 'MovieController@genero')->name("genero");
+Route::get('busqueda/porTitulo', 'MovieController@titulo')->name("porTitulo");
+Route::get('busqueda/porDirector', 'MovieController@director')->name("porDirector");
