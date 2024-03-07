@@ -17,7 +17,7 @@
         </nav>
         <main>
             <h1 class='centrado'>@yield('main_title')</h1><br>
-            @section('content') <!--PREGUNTAR POR QUÉ SECTION/SHOW Y NO YIELD-->
+            @section('content') <!--Podrías incluir un código predeterminado, si no utiliza yield directamente-->
             @show
         </main>
 		<aside>

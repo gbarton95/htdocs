@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    display: flex;
+    min-height: 100vh;
+}
+
+#free {
+    width: 100%;
+}
+
+.principal-izq {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: gray;
+    max-width: 35%;
+    min-width: 230px;
+}
+
+.principal-dch {
+    flex: 1;
+    min-height: 100vh;
+    height: 100%;
+    padding: 0px 5%;
+    text-align: center;
+}
+
+.principal-dch img {
+    max-width: 30%;
+    min-width: 200px;
+    padding: 5px;
+    
+}
+
+.content-izq {
+    padding: 20px;
+}
+
+.content-izq h2:first-child {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.txt-centrado {
+    text-align: center;
+}
+
+.justified {
+    text-align: justify;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    text-align: center;
+}
+
+h2, h3 {
+    padding: 0;
+    margin-bottom: 0;
+}
+
+button, .boton {
+    margin: auto;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    min-width: 150px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.cont-botones {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cont-botones1 a{
+    flex: 1;
+    margin: 5px;
+    font-size: medium;
+}
+
+.buscador {
+    display: flex;
+    align-items: center;
+}
+
+.buscador input:first-child {
+    flex: 1;
+}
+.lupa {
+    width: 25px;
+    margin-left: 5px;
+}
+
+.formal {
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+
+.cartel {
+    display: flex;
+    padding: 20px;
+    height: 350px;
+}
+
+.cartel img {
+    padding: 10px 20px 10px 0px;
+}
+
+.sinopsis {
+    margin: 15px;
+}
