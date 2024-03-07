@@ -18,6 +18,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Papel higiénico extrasuave para culos sensibles',
             'price' => '1.35',
             'stock' => 35,
+            'order_id' => 1,
             'supplier_id' => 2,
         ]);
         DB::table('products')->insert([
@@ -25,6 +26,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Lejía pura capaz de taladrar las baldosas',
             'price' => '0.95',
             'stock' => 20,
+            'order_id' => null,
             'supplier_id' => 1,
         ]);
         DB::table('products')->insert([
@@ -32,6 +34,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Detergente líquido para lavadoras',
             'price' => '4.90',
             'stock' => 15,
+            'order_id' => 2,
             'supplier_id' => 1,
         ]);
         DB::table('products')->insert([
@@ -39,6 +42,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Gel hidroalcólico sin perfume, 70% de alcohol',
             'price' => '3.50',
             'stock' => 50,
+            'order_id' => 3,
             'supplier_id' => 3,
         ]);
         DB::table('products')->insert([
@@ -46,6 +50,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Gel de baño con aceites vegetales, hipoalergénico',
             'price' => '1.50',
             'stock' => 65,
+            'order_id' => null,
             'supplier_id' => 2,
         ]);
         DB::table('products')->insert([
@@ -53,6 +58,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Champú anticaspa (provoca calvicie solo al 20% de usuarios)',
             'price' => '3.70',
             'stock' => 23,
+            'order_id' => 4,
             'supplier_id' => 2,
         ]);
         DB::table('products')->insert([
@@ -60,6 +66,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Arranca hasta el gotelé',
             'price' => '2.30',
             'stock' => 12,
+            'order_id' => null,
             'supplier_id' => 2,
         ]);
         DB::table('products')->insert([
@@ -67,6 +74,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Absorbe los océanos con este papel de 50 capas',
             'price' => '1.90',
             'stock' => 38,
+            'order_id' => null,
             'supplier_id' => 1,
         ]);
         DB::table('products')->insert([
@@ -74,6 +82,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Ni absenta, ni Jager...',
             'price' => '0.90',
             'stock' => 20,
+            'order_id' => null,
             'supplier_id' => 3,
         ]);
         DB::table('products')->insert([
@@ -81,6 +90,7 @@ class ProductTableSeeder extends Seeder
             'description' => 'Para fregar cazuelas o niños muy sucios',
             'price' => '1.50',
             'stock' => 32,
+            'order_id' => null,
             'supplier_id' => 1,
         ]);
     }

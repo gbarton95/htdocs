@@ -13,4 +13,9 @@ class Product extends Model
     public function supplier() {
         return $this->belongsTo('App\Models\Supplier');
     }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
 }

@@ -12,4 +12,8 @@ class Employee extends Model
     public function contact() {
         return $this->hasMany('App\Models\Contact');
     }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -24,8 +24,13 @@ Route::patch('product/{product}', 'ProductController@update')->name('product.upd
 Route::delete('product/{product}', 'ProductController@destroy')->name('product.destroy');
 
 Route::get('supplier/products', 'SupplierController@products')->name('supplier.products');
+
 Route::get('order/form', 'OrderController@showForm')->name('order.form');
 Route::get('order/resume', 'OrderController@showResume')->name('order.resume');
+Route::get('order/status', 'OrderController@showStatus')->name('order.status');
+Route::get('order/create', 'OrderController@create')->name('order.create');
+Route::get('order/update', 'OrderController@update')->name('order.update');
+Route::delete('order/{product}', 'OrderController@destroy')->name('order.destroy');
 
 Route::resource('supplier', 'SupplierController');
 Route::resource('contact', 'ContactController');

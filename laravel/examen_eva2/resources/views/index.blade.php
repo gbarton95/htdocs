@@ -45,9 +45,17 @@
             </td>
             <td class="sinbordes mitad">
 
-                <form action = "{{ route('order.form') }}" method="GET" class="centrado">
+                <form action = "{{ route('order.status') }}" method="GET" class="centrado">
                     @csrf
                     <input type="submit" value="Pedidos" class="grande">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="sinbordes mitad">
+                <form action = "{{ route('order.form') }}" method="GET" class="centrado">
+                    @csrf
+                    <input type="submit" value="Realizar un pedido" class="grande">
                 </form>
             </td>
         </tr>
