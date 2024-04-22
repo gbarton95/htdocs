@@ -19,11 +19,13 @@ return new class extends Migration
             $table->boolean('PPP')->default(false);
             $table->timestamps();
 
-            //Relación perros-propietario
-            $table->foreign('propietario_id')
-                ->references('id')
-                ->on('propietarios')
-                ->onDelete('cascade'); //se eliminan los perros si se borra el propietario
+           
+                //Relación perros-propietario
+                $table->foreign('propietario_id')
+                    ->references('id')
+                    ->on('propietarios')
+                    ->onDelete('cascade'); //se eliminan los perros si se borra el propietario
+            
         });
     }
 

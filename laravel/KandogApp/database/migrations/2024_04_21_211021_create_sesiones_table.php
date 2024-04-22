@@ -17,17 +17,18 @@ return new class extends Migration
             $table->integer('duración');
             $table->timestamps();
 
+            
             //Relación con eventos
             $table->foreign('evento_id')
                 ->references('id')
                 ->on('eventos')
-                ->onDelete('cascade'); // Eliminación en cascada
-
+                ->onDelete('cascade');
             // Relación con perros
             $table->foreign('perro_id')
                 ->references('id')
                 ->on('perros') 
-                ->onDelete('set null'); // Si se elimina el perro, se establece a 'null'
+                ->onDelete('set null');
+            
 
         });
     }
