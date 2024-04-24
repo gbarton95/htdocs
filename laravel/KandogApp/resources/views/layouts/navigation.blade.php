@@ -13,7 +13,27 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        Resumen
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('perros')" :active="request()->routeIs('perros')">
+                        Perros
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('eventos')" :active="request()->routeIs('dashboard')">
+                        Eventos
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('recursos')" :active="request()->routeIs('recursos')">
+                        Recursos
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        Ayuda
                     </x-nav-link>
                 </div>
             </div>
@@ -66,11 +86,6 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
@@ -81,17 +96,27 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    Perfil
                 </x-responsive-nav-link>
-
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    Perros
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    Calendario
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    Eventos
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    Recursos
+                </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        Cerrar sesión
                     </x-responsive-nav-link>
                 </form>
             </div>
