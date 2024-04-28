@@ -1,10 +1,18 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PerroController;
 use Illuminate\Support\Facades\Route;
 
 // Welcome
-Route::view('/', 'welcome');
+Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    } else {
+        // Redirige a la página de inicio de sesión o registro si no está autenticado
+        return view('welcome');
+    }
+})->name('welcome');
 
 // .../registro
 Route::view('/registro', 'auth.register')->name('register');
@@ -14,15 +22,13 @@ Route::get('/resumen', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-
 // .../perfil
 Route::view('perfil', 'perfil')->name('perfil');
 
 // .../perros
-Route::get('/perros', function () {
-    return view('perros');
-})->middleware(['auth', 'verified'])->name('perros');
+Route::get('/perros', [PerroController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('perros');
 
 // .../eventos
 Route::get('/eventos', function () {

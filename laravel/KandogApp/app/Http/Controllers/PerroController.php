@@ -1,17 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Perro;
 use Illuminate\Http\Request;
 
 class PerroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $perros = Perro::all();
+        return view('perros', ['perros' => $perros]);
     }
 
     /**
