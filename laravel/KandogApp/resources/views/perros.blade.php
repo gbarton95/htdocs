@@ -9,31 +9,33 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                   <!--Contenido aquí-->
+                    <!--Contenido aquí-->
 
-                   <h1>Lista de Perros</h1>
-               
-                   <table class="table w-full table-striped">
-                       <thead>
-                           <tr>
-                               <th>Nombre</th>
-                               <th>Raza</th>
-                               <th>Tutor</th>
-                               <th>Teléfono</th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           @foreach ($perros as $perro)
-                               <tr>
-                                   <td>{{ $perro->nombre }}</td>
-                                   <td>{{ $perro->raza ?? 'Desconocido' }}</td>
-                                   <td>{{ $perro->Propietario->nombre}}</td>
-                                   <td>{{ $perro->Propietario->telefono}}</td>
-                               </tr>
-                           @endforeach
-                       </tbody>
-                   </table>
+                    <form name="searchForm" action="{{ route('perrosearch') }}" method="GET">
+                        <input type="search" name="inputSearch" placeholder="Buscar...">
+                        <button type="submit" name="buttonSearch">Buscar<!--img=""--></button>
 
+                        <table class="table w-full table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Raza</th>
+                                    <th>Tutor</th>
+                                    <th>Teléfono</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($perros as $perro)
+                                    <tr>
+                                        <td>{{ $perro->nombre }}</td>
+                                        <td>{{ $perro->raza ?? 'Desconocido' }}</td>
+                                        <td>{{ $perro->Propietario->nombre }}</td>
+                                        <td>{{ $perro->Propietario->telefono }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>

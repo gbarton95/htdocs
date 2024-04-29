@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Perro;
+use App\Models\Propietario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PerroController extends Controller
 {
@@ -58,5 +60,17 @@ class PerroController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $word){
+        $perros = DB::table('perros')
+                ->join('propietarios', 'perros.propietario_id', '=', 'propietarios.id')
+                ->select('perros.*', 'propietarios.nombre')
+                ->where('perros.nombre', 'LIKE', '%'.$word.'%')
+                ->orWhere('perros.raza', 'LIKE', '%'.$word.'%')
+                ->orWhere('propietarios.nombre', 'LIKE', '%'.$word.'%')
+                ->orWhere('propietarios.telefono', 'LIKE', '%'.$word.'%')
+                ->get();
+        return view('perros', ['perros'=>$perros]);
     }
 }
