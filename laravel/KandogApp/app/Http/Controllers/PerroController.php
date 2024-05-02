@@ -14,12 +14,17 @@ class PerroController extends Controller
         return view('perros', ['perros' => $perros]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $perro = Perro::create([
+            'nombre' => $request->nombre,
+            'raza' => $request->raza,
+            'edad' => $request->edad,
+            'propietario_id' => $request->propietario_id,
+        ]);
+    
+        // Redirigir o devolver respuesta
+        return redirect()->route('perros.index')->with('success', 'Perro creado exitosamente');
     }
 
     /**
@@ -64,13 +69,21 @@ class PerroController extends Controller
 
     public function search(Request $word){
         $perros = DB::table('perros')
-                ->join('propietarios', 'perros.propietario_id', '=', 'propietarios.id')
-                ->select('perros.*', 'propietarios.nombre')
-                ->where('perros.nombre', 'LIKE', '%'.$word.'%')
-                ->orWhere('perros.raza', 'LIKE', '%'.$word.'%')
-                ->orWhere('propietarios.nombre', 'LIKE', '%'.$word.'%')
-                ->orWhere('propietarios.telefono', 'LIKE', '%'.$word.'%')
+                ->where('nombre', 'LIKE', '%'.$word.'%')
+                // ->join('propietarios', 'perros.propietario_id', '=', 'propietarios.id')
+                // ->select('perros.*', 'propietarios.nombre')
+                // ->where('perros.nombre', 'LIKE', '%'.$word.'%')
+                // ->orWhere('perros.raza', 'LIKE', '%'.$word.'%')
+                // ->orWhere('propietarios.nombre', 'LIKE', '%'.$word.'%')
+                // ->orWhere('propietarios.telefono', 'LIKE', '%'.$word.'%')
                 ->get();
         return view('perros', ['perros'=>$perros]);
+    }
+
+    public function detalle()
+    {
+       // $perro = perro con el id del request
+
+        return view('perrosdetalle');
     }
 }

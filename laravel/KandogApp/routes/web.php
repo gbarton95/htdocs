@@ -33,6 +33,9 @@ Route::get('/perros', [PerroController::class, 'index'])
 Route::get('/perros2', [PerroController::class, 'search'])
 ->middleware(['auth', 'verified'])->name('perrosearch');
 
+Route::get('/perros/detalle', [PerroController::class, 'detalle'])
+->middleware(['auth', 'verified'])->name('perrodetalle');
+
 // .../eventos
 Route::get('/eventos', function () {
     return view('eventos');

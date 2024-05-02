@@ -14,28 +14,30 @@
                     <form name="searchForm" action="{{ route('perrosearch') }}" method="GET">
                         <input type="search" name="inputSearch" placeholder="Buscar...">
                         <button type="submit" name="buttonSearch">Buscar<!--img=""--></button>
-
-                        <table class="table w-full table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Raza</th>
-                                    <th>Tutor</th>
-                                    <th>Teléfono</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($perros as $perro)
-                                    <tr>
-                                        <td>{{ $perro->nombre }}</td>
-                                        <td>{{ $perro->raza ?? 'Desconocido' }}</td>
-                                        <td>{{ $perro->Propietario->nombre }}</td>
-                                        <td>{{ $perro->Propietario->telefono }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
                     </form>
+
+                    <table class="table w-full table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Raza</th>
+                                <th>Tutor</th>
+                                <th>Teléfono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($perros as $perro)
+                                <tr>
+                                    <td>{{ $perro->nombre }}</td>
+                                    <td>{{ $perro->raza ?? 'Desconocido' }}</td>
+                                    <td>{{ $perro->Propietario->nombre }}</td>
+                                    <td>{{ $perro->Propietario->telefono }}</td>
+                                    <td><img src="{{ asset('private_img/edit.png') }}" alt="imagen de portada"></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    
                 </div>
             </div>
         </div>
