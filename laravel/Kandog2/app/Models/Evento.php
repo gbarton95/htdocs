@@ -18,10 +18,12 @@ class Evento extends Model
     
     protected $fillable = [
         'adiestrador_id',
-        'fecha',
-        'hora',
+        'titulo',
+        'tipo',
+        'start_date',
+        'end_date',
         'ubicacion',
-        'estado',
+        'estado'
     ];
 
     public function adiestrador()

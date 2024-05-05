@@ -8,11 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    
-                    <div id='calendar'></div>
-
-                    
+                <div class="p-6 text-gray-900 dark:text-gray-100"> 
+                    <div id='calendario'></div>                    
                 </div>
             </div>
         </div>
@@ -22,12 +19,16 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
+      var calendario = document.getElementById('calendario');
+      var calendar = new FullCalendar.Calendar(calendario, 
+      {
+        locale: 'es',
         initialView: 'dayGridMonth', //más opciones en Fullcalendar views
         events: @json($events)
       });
       calendar.render();
     });
+    
+    calendar.setOption('locale', 'en');
 
 </script>

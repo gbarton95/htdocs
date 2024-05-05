@@ -15,8 +15,10 @@ return new class extends Migration
                 ->references('id')
                 ->on('adiestradores')
                 ->onDelete('cascade');
-            $table->date('fecha');
-            $table->time('hora');
+            $table->string('titulo')->nullable();
+            $table->enum('tipo', ['Sesion', 'Otro']);
+            $table->datetime('start_date');
+            $table->datetime('end_date');
             $table->string('ubicación');
             $table->enum('estado', ['Programado', 'Cancelado', 'Pendiente de cobro', 'Completado']);
             $table->timestamps();

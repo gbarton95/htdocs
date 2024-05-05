@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['event', 'start_date', 'end_date'];
-
+    protected $fillable = ['title', 'description', 'is_publish'];
 }

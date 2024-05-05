@@ -48,7 +48,7 @@ class PerroController extends Controller
         $PPP = $perro->PPP;
         $anotaciones = $perro->anotaciones;
 
-        return view('perro.detalle', ['propietario'=>$propietario, 'nombre' => $nombre, 'edad' => $edad, 'sexo' => $sexo, 'raza' => $raza, 'peso' => $peso, 'PPP' => $PPP, 'anotaciones' => $anotaciones]);
+        return view('perro.show', ['propietario'=>$propietario, 'nombre' => $nombre, 'edad' => $edad, 'sexo' => $sexo, 'raza' => $raza, 'peso' => $peso, 'PPP' => $PPP, 'anotaciones' => $anotaciones]);
     }
 
     

@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('calendario', 'EventsController@index')->name('calendario');
+Route::get('calendario', 'EventoController@index')->name('calendario');
 
 //Todas las rutas básicas de perros
 Route::resource('perro', PerroController::class);
