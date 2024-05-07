@@ -11,18 +11,20 @@ return new class extends Migration
     {
         Schema::create('sesiones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('evento_id');
-                $table->foreign('evento_id')
-                    ->references('id')
-                    ->on('eventos')
-                    ->onDelete('cascade');
-            $table->unsignedBigInteger('propietario_id');
-                $table->foreign('propietario_id')
-                    ->references('id')
-                    ->on('propietarios') 
-                    ->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+                $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('perro_id');
+                $table->foreign('perro_id')
+                ->references('id')
+                ->on('perros') 
+                ->onDelete('cascade');
             $table->string('asunto');
-            $table->integer('duración');
+            $table->string('ubicacion');
+            $table->datetime('inicio');
+            $table->integer('duracion');
             $table->timestamps();
         });
     }

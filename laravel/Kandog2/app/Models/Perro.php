@@ -17,19 +17,24 @@ class Perro extends Model
     ];
 
     protected $fillable = [
-        'propietario_id',
+        'user_id',
         'nombre',
         'edad',
         'sexo',
         'raza',
         'peso',
         'PPP',
-        'anotaciones'
+        'anotaciones',
+        'tutor_nombre',
+        'tutor_apellidos',
+        'telefono',
+        'email',
+        'codigo_postal'
     ];
 
-    public function propietario()
+    public function user()
     {
-        return $this->belongsTo(Propietario::class);
+        return $this->belongsTo(User::class);
     }
 
 }

@@ -10,17 +10,15 @@ return new class extends Migration
     {
         Schema::create('otros', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('evento_id');
+            $table->unsignedBigInteger('user_id');
+                $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->string('tema');
             $table->integer('plazas');
             $table->string('material');
             $table->timestamps();
-
-            //Relación con eventos
-            $table->foreign('evento_id')
-                ->references('id')
-                ->on('eventos')
-                ->onDelete('cascade');
         });
 
     }

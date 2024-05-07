@@ -1,0 +1,30 @@
+.lupa {
+    width: 25px;
+    margin-left: 5px;
+}
+
+.btn-primary {
+    background-color: #f4b325;
+    border: 2px solid #f4b325;
+    color: black;
+    transition: 0.5s;
+}
+
+.btn-primary:hover{
+    background-color: orange;
+    border: 2px solid #f4b325;
+    color: black;
+    font-weight: 800;
+}
+
+/*COLORES*/
+
+.personal-bg-orange {
+    background-color: #f4b325;
+}
+
+.fondo-huesos {
+    background-image: url(../images/fondo_bg.png);
+    background-repeat: repeat;
+    background-size: 10%;
+}

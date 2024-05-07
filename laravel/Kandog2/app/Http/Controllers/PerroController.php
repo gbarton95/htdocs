@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Perro;
-use App\Models\Propietario;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class PerroController extends Controller
@@ -15,10 +16,22 @@ class PerroController extends Controller
 
     public function index()
     {
-        $perros = Perro::all();
+        $user = auth()->user();
+        $perros = Perro::where('user_id', $user->id)->get();
         return view('perro.index', ['perros' => $perros]);
     }
 
+    public function search(Request $busqueda)
+    {
+        $userRequest = $busqueda->input('searchDog'); /* Sacamos del request el input a través del name */
+        $perros = DB::table('perros') /* Listado de perros con que contengan algún valor como ese */
+                          ->where('nombre', 'LIKE', '%'.$userRequest.'%')
+                          ->orwhere('telefono', 'LIKE', '%'.$userRequest.'%')
+                          ->orwhere('tutor_nombre', 'LIKE', '%'.$userRequest.'%')
+                          ->get();
+
+        return view('perro.index', ['perros'=>$perros]);
+    }
    
     public function create()
     {
@@ -30,8 +43,26 @@ class PerroController extends Controller
     public function store(Request $request)
     {
         //Aquí introducimos los valores del formulario de create
-        Perro::create($request->all());
-        return "El perro se ha añadido a tu lista.";
+        $perro = new Perro();
+        $user = auth()->user()->id;
+
+        $perro->user_id = $user;
+        $perro->nombre = $request->nombre;
+        $perro->edad = $request->edad;
+        $perro->sexo = $request->sexo;
+        $perro->raza = $request->raza;
+        $perro->peso = number_format($request->peso);
+        $perro->PPP = $request->PPP;
+        $perro->anotaciones = $request->anotaciones;
+        $perro->tutor_nombre= $request->tutor_nombre;
+        $perro->tutor_apellidos= $request->tutor_apellidos;
+        $perro->telefono= $request->telefono;
+        $perro->email= $request->email;
+        $perro->codigo_postal= $request->codigo_postal;
+
+        $perro->save();
+
+        return redirect()->route('perro.index')->with('success', 'El perro se ha añadido a tu lista.');
     }
 
     
@@ -39,7 +70,6 @@ class PerroController extends Controller
     {
         $perro = Perro::find($id);
 
-        $propietario = $perro->propietario_id;
         $nombre = $perro->nombre;
         $edad = $perro->edad;
         $sexo = $perro->sexo;
@@ -47,17 +77,22 @@ class PerroController extends Controller
         $peso = $perro->peso;
         $PPP = $perro->PPP;
         $anotaciones = $perro->anotaciones;
+        $tutor_nombre= $perro->tutor_nombre;
+        $tutor_apellidos= $perro->tutor_apellidos;
+        $telefono= $perro->telefono;
+        $email= $perro->email;
+        $codigo_postal= $perro->codigo_postal;
 
-        return view('perro.show', ['propietario'=>$propietario, 'nombre' => $nombre, 'edad' => $edad, 'sexo' => $sexo, 'raza' => $raza, 'peso' => $peso, 'PPP' => $PPP, 'anotaciones' => $anotaciones]);
+        return view('perro.show', ['nombre' => $nombre, 'edad' => $edad, 'sexo' => $sexo, 'raza' => $raza, 
+        'peso' => $peso, 'PPP' => $PPP, 'anotaciones' => $anotaciones, 'tutor_nombre'=> $tutor_nombre, 
+        'tutor_apellidos'=>$tutor_apellidos, 'telefono'=>$telefono, 'email'=>$email, 'codigo_postal'=>$codigo_postal]);
     }
 
     
-    public function edit($id)
+    public function edit(Perro $perro)
     {
-        $perro = Perro::find($id);
-        $propietarios = Propietario::all();
-
-        return view('perro.edit', compact('perro', 'propietarios'));
+        // $perro = Perro::find($id);
+        return view('perro.edit', compact('perro'));
     }
 
     
@@ -72,7 +107,12 @@ class PerroController extends Controller
         $perro->peso = $request->peso;
         $perro->PPP = $request->PPP;
         $perro->anotaciones = $request->anotaciones;
-
+        $perro->tutor_nombre= $request->tutor_nombre;
+        $perro->tutor_apellidos= $request->tutor_apellidos;
+        $perro->telefono= $request->telefono;
+        $perro->email= $request->email;
+        $perro->codigo_postal= $request->codigo_postal;
+    
         $perro->save();
 
 

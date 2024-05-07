@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PerroController;
+use App\Http\Controllers\SesionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,9 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('calendario', 'EventoController@index')->name('calendario');
+Route::get('calendario', 'SesionController@index')->middleware(['auth', 'verified'])->name('calendario'); //??
 
-//Todas las rutas básicas de perros
-Route::resource('perro', PerroController::class);
+//Rutas de sesiones
+Route::resource('sesion', SesionController::class)->middleware(['auth', 'verified']);
+
+//Rutas de perros
+Route::post('perro/buscar', [PerroController::class, 'search'])->name('perro.search');
+Route::resource('perro', PerroController::class)->middleware(['auth', 'verified']);
+
 
 require __DIR__.'/auth.php';

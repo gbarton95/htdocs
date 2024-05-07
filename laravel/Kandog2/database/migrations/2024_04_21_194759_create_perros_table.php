@@ -10,18 +10,23 @@ return new class extends Migration
     {
         Schema::create('perros', function (Blueprint $table) {
             $table->id()->index();
-            $table->unsignedBigInteger('propietario_id');
-                $table->foreign('propietario_id')
+            $table->unsignedBigInteger('user_id');
+                $table->foreign('user_id')
                         ->references('id')
-                        ->on('propietarios')
+                        ->on('users')
                         ->onDelete('cascade');
             $table->string('nombre', 30);
-            $table->integer('edad');
+            $table->string('edad');
             $table->enum('sexo', ['Macho', 'Hembra']);
             $table->string('raza')->nullable();
             $table->integer('peso')->nullable();
             $table->boolean('PPP')->default(false);
             $table->string('anotaciones', 150)->nullable();
+            $table->string('tutor_nombre');
+            $table->string('tutor_apellidos')->nullable(); 
+            $table->string('telefono', 15);
+            $table->string('email')->nullable();
+            $table->string('codigo_postal')->nullable();
             $table->timestamps();           
         });
     }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Evento;
+use App\Models\User;
 
 class Otro extends Model
 {
@@ -17,15 +17,15 @@ class Otro extends Model
     ];
 
     protected $fillable = [
-        'evento_id',
+        'user_id',
         'tema',
         'plazas',
         'material'
     ];
 
-    public function evento()
+    public function user()
     {
-        return $this->belongsTo(Evento::class);
+        return $this->belongsTo(User::class);
     }
 
 }

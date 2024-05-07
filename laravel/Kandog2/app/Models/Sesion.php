@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Propietario;
-use App\Models\Evento;
+use App\Models\Perro;
+use App\Models\User;
 
 class Sesion extends Model
 {
@@ -18,21 +18,22 @@ class Sesion extends Model
     ];
 
     protected $fillable = [
-        'evento_id',
-        'propietario_id',
+        'user_id',
+        'perro_id',
         'asunto',
-        'duración',
+        'ubicacion',
+        'inicio',
+        'duracion'
     ];
     
-    public function evento()
+    public function perro()
     {
-        return $this->belongsTo(Evento::class);
+        return $this->belongsTo(Perro::class);
     }
 
-    public function propietario()
+    public function user()
     {
-        return $this->belongsTo(Propietario::class);
+        return $this->belongsTo(User::class);
     }
-
 
 }
