@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Perro;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,20 +16,25 @@ class PerroController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $buscar = false;
         $perros = Perro::where('user_id', $user->id)->get();
-        return view('perro.index', ['perros' => $perros]);
+        return view('perro.index', ['perros' => $perros, 'buscar'=>$buscar]);
     }
 
     public function search(Request $busqueda)
     {
-        $userRequest = $busqueda->input('searchDog'); /* Sacamos del request el input a través del name */
-        $perros = DB::table('perros') /* Listado de perros con que contengan algún valor como ese */
-                          ->where('nombre', 'LIKE', '%'.$userRequest.'%')
-                          ->orwhere('telefono', 'LIKE', '%'.$userRequest.'%')
-                          ->orwhere('tutor_nombre', 'LIKE', '%'.$userRequest.'%')
-                          ->get();
-
-        return view('perro.index', ['perros'=>$perros]);
+        $buscar=true;
+        $user = auth()->user();
+        $userRequest = $busqueda->input('searchDog');
+        $perros = DB::table('perros')
+            ->where('user_id', $user->id)
+            ->where(function ($query) use ($userRequest) {
+                $query->where('nombre', 'LIKE', '%' . $userRequest . '%')
+                    ->orWhere('telefono', 'LIKE', '%' . $userRequest . '%')
+                    ->orWhere('tutor_nombre', 'LIKE', '%' . $userRequest . '%');
+             })
+            ->get();
+        return view('perro.index', ['perros'=>$perros, 'buscar'=>$buscar]);
     }
    
     public function create()
@@ -38,7 +42,6 @@ class PerroController extends Controller
         //Lleva a la vista del formulario
         return view('perro.create');
     }
-
     
     public function store(Request $request)
     {
@@ -125,5 +128,15 @@ class PerroController extends Controller
         $perro = Perro::find($id);
         $perro->delete();
         return redirect()->route('perro.index')->with('success', 'Perro eliminado con éxito.');
+    }
+
+    public function ordenarTabla(Request $request){
+        $user = auth()->user();
+        $buscar = false;
+        $columna = $request->input('columna');
+        $perros = Perro::where('user_id', $user->id)
+            ->orderBy($columna)
+            ->get();
+        return view('perro.index', ['perros' => $perros, 'buscar'=>$buscar])->render();
     }
 }

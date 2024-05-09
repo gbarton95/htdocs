@@ -31,13 +31,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('calendario', 'SesionController@index')->middleware(['auth', 'verified'])->name('calendario'); //??
+Route::get('sesiones', 'SesionController@index')->middleware(['auth', 'verified'])->name('calendario'); //??
 
 //Rutas de sesiones
+Route::get('sesion/create/{id_perro}', 'SesionController@createSesion')->middleware(['auth', 'verified'])->name('sesion.create2');
 Route::resource('sesion', SesionController::class)->middleware(['auth', 'verified']);
 
 //Rutas de perros
-Route::post('perro/buscar', [PerroController::class, 'search'])->name('perro.search');
+Route::post('perro/buscar', [PerroController::class, 'search'])->middleware(['auth', 'verified'])->name('perro.search');
+Route::get('perro/ordenar', [PerroController::class, 'ordenarTabla'])->name('perro.ordenarTabla');
 Route::resource('perro', PerroController::class)->middleware(['auth', 'verified']);
 
 

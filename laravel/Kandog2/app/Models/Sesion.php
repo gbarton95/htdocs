@@ -11,6 +11,8 @@ class Sesion extends Model
 {
     use HasFactory;
 
+    protected $table = "sesiones";
+
     protected $guarded = [
         'id',
         'created_at',

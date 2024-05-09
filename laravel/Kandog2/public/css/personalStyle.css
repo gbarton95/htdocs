@@ -3,6 +3,10 @@
     margin-left: 5px;
 }
 
+.columnaBoton {
+    width: 100px;
+}
+
 .btn-primary {
     background-color: #f4b325;
     border: 2px solid #f4b325;

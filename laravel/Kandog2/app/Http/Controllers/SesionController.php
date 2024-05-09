@@ -3,20 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sesion;
+use App\Models\Perro;
 
 class SesionController extends Controller
 {
     public function index()
     {
-        //
+        $user = auth()->user();
+        $buscar = false;
+        $sesiones = Sesion::where('user_id', $user->id)->get();
+        return view('sesion.index', ['sesiones' => $sesiones, 'buscar'=>$buscar]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    // $perro = Perro::find($id);
+    // return view('sesion.create', ['perro'=>$perro]);
+
+
+    public function createSesion(string $id)
     {
-        return view('sesion.create');
+        $perro = Perro::find($id);
+        return view('sesion.create', ['perro'=>$perro]);
     }
 
     /**

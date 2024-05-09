@@ -10,6 +10,8 @@ class Perro extends Model
 {
     use HasFactory;
 
+    protected $table = "perros";
+
     protected $guarded = [
         'id',
         'created_at',
