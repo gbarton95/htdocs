@@ -18,8 +18,8 @@
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen fondo-huesos dark:bg-gray-900">
+    <body class="font-sans antialiased fondo-huesos">
+        <div class="min-h-screen dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -36,6 +36,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <x-footer></x-footer>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </body>
 </html>
