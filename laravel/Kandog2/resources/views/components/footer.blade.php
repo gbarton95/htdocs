@@ -1,10 +1,9 @@
-<div class="flex justify-center sm:justify-between mb-2 px-0 sm:items-center max-w-7xl mx-auto sm:px-6 lg:px-8 personal-footer">
-    <div class="text-center text-m sm:text-left">
-        <p>Kandog © 2024</p>
-    </div>
-
-    <div class="text-center text-m text-gray-800 dark:text-gray-400 sm:text-right">
-        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#modalAvisoLegal">
+<div class="container">
+    <div class="text-center text-m text-gray-800 dark:text-gray-400 sm:text-right row justify-between">
+        <div class="text-center text-m sm:text-left col-12 col-sm-2 mt-0 pt-0 mb-2">
+            <p>Kandog © 2024</p>
+        </div>        
+        <button type="button" class="boton-foot col-12 col-sm-2" data-bs-toggle="modal" data-bs-target="#modalAvisoLegal">
             {{ __('Legal warning') }}
         </button>
         <!-- Modal aviso legal-->
@@ -246,9 +245,7 @@
             </div>
         </div>
 
-        -
-
-        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">
+        <button type="button" class="boton-foot col-12 col-sm-2" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">
             {{ __('Privacy Policy') }}
         </button>
         <!-- Modal politica privacidad-->
@@ -648,9 +645,7 @@
             </div>
         </div>
 
-        -
-
-        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#modalCookies">
+        <button type="button" class="boton-foot col-12 col-sm-2" data-bs-toggle="modal" data-bs-target="#modalCookies">
             {{ __('Cookies policy') }}
         </button>
         <!-- Modal politica cookies-->
@@ -1070,9 +1065,7 @@
             </div>
         </div>
 
-        -
-
-        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#modalCondicionesVenta">
+        <button type="button" class="boton-foot col-12 col-sm-2" data-bs-toggle="modal" data-bs-target="#modalCondicionesVenta">
             {{ __('Terms of sale') }}
         </button>
         <!-- Modal condiciones venta-->
