@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::get('sesiones', 'SesionController@index')->middleware(['auth', 'verified'])->name('calendario'); //??
 
 //Rutas de sesiones
+Route::post('sesion/buscar', [SesionController::class, 'search'])->middleware(['auth', 'verified'])->name('sesion.search');
 Route::get('sesion/create/{id_perro}', 'SesionController@createSesion')->middleware(['auth', 'verified'])->name('sesion.create2');
 Route::resource('sesion', SesionController::class)->middleware(['auth', 'verified']);
 

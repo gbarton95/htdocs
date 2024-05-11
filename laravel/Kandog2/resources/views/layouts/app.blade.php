@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta author="Gabriela Barton">
+        <!--MIRAR MÁS-->
 
         <title>{{ config('app.name', 'Kandog') }}</title>
 
@@ -18,8 +20,8 @@
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased fondo-huesos">
-        <div class="min-h-screen dark:bg-gray-900">
+    <body class="font-sans antialiased fondo-huesos min-h-screen">
+        <div class=" dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

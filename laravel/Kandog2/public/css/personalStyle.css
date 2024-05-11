@@ -29,6 +29,12 @@
     margin-left: 20px;
 }
 
+.personal-footer {
+    position: fixed;
+    bottom: 0;
+    padding: 20px;
+  }
+
 /*COLORES*/
 
 .personal-bg-orange {

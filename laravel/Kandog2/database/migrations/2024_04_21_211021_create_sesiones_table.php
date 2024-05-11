@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('ubicacion');
             $table->datetime('inicio');
             $table->integer('duracion');
+            $table->boolean('done')->default(false);
             $table->timestamps();
         });
     }

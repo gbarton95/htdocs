@@ -1,1 +1,0 @@
-<img src="{{ asset('private_img/Logo_naranja.png') }}" alt="Logo de Kandog" class="w-20 h-20 fill-current text-gray-500" />

@@ -25,7 +25,8 @@ class Sesion extends Model
         'asunto',
         'ubicacion',
         'inicio',
-        'duracion'
+        'duracion',
+        'done'
     ];
     
     public function perro()

@@ -1,4 +1,4 @@
-<div class="flex justify-center sm:justify-between mb-2 px-0 sm:items-center max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class="flex justify-center sm:justify-between mb-2 px-0 sm:items-center max-w-7xl mx-auto sm:px-6 lg:px-8 personal-footer">
     <div class="text-center text-m sm:text-left">
         <p>Kandog © 2024</p>
     </div>

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Perro;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\Perro;
 
 class PerroController extends Controller
 {
@@ -17,7 +17,9 @@ class PerroController extends Controller
     {
         $user = auth()->user();
         $buscar = false;
-        $perros = Perro::where('user_id', $user->id)->get();
+        $perros = Perro::where('user_id', $user->id)
+            // ->where('active', '0')
+            ->get();
         return view('perro.index', ['perros' => $perros, 'buscar'=>$buscar]);
     }
 
@@ -99,9 +101,9 @@ class PerroController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $perro = Perro::find($id);
+        $perro = $request->input('editarPerro');
         
         $perro->nombre = $request->nombre;
         $perro->edad = $request->edad;
