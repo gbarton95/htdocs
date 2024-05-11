@@ -6,7 +6,7 @@
     </x-slot>
 
     
-    <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 pb-3 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
 
@@ -37,40 +37,37 @@
                 </div>
 
                 <!--TABLA VISTA PERROS-->
-                <div class="pt-4">
+                <div class="pt-4 pb-0">
                     <table id="tablaVerPerros" class="table table-striped table-bordered align-middle" @if($perros->isEmpty()) hidden="true" @endif>
                         <thead class="thead-dark">
                             <tr>
                                 <th onclick="ordenarTabla('nombre')" scope="col">{{__('Name')}}</th>
-                                <th onclick="ordenarTabla('edad')" scope="col">{{__('Age')}}</th>
-                                <th onclick="ordenarTabla('raza')" scope="col">{{__('Breed')}}</th>
+                                <th class="d-none d-md-table-cell" onclick="ordenarTabla('edad')" scope="col">{{__('Age')}}</th>
+                                <th class="d-none d-md-table-cell" onclick="ordenarTabla('raza')" scope="col">{{__('Breed')}}</th>
                                 <th onclick="ordenarTabla('tutor_nombre')" scope="col">{{__('Owner')}}</th>
-                                <th scope="col">{{__('Phone number')}}</th>
-                                <th onclick="ordenarTabla('telefono')" class="columnaBoton"></th>
-                                <th class="columnaBoton"></th>
-                                <th class="columnaBoton"></th>
+                                <th class="d-none d-sm-table-cell" scope="col">{{__('Phone number')}}</th>
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla">
                             @foreach ($perros as $perro)
                                 <tr class="">
                                     <td>{{ $perro->nombre }}</td>
-                                    <td>{{ $perro->edad }}</td>
-                                    <td>{{ $perro->raza }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $perro->edad }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $perro->raza }}</td>
                                     <td scope="row">{{ $perro->tutor_nombre }} {{ $perro->tutor_apellidos }}</td>
-                                    <td>{{ $perro->telefono }}</td>
+                                    <td class="d-none d-sm-table-cell">{{ $perro->telefono }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('perro.edit', $perro->id) }}" class="btn btn-primary btn-sm w-100">{{ __('Edit') }}</a>
-                                    </td>
-                                    <td class="text-center">
+                                        <div class="mb-1">
+                                            <a href="{{ route('perro.edit', $perro->id) }}" class="btn btn-primary btn-sm w-100">{{ __('Edit') }}</a>
+                                        </div>
                                         <form action="{{ route('perro.destroy', $perro->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm w-100 h-80">{{ __('Delete') }}</button>
                                         </form>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="{{ route('sesion.create2', $perro->id) }}" class="btn btn-success btn-sm w-100">{{ __('Session +') }}</a>
+                                        <div class="mt-1">
+                                            <a href="{{ route('sesion.create2', $perro->id) }}" class="btn btn-success btn-sm w-100">{{ __('Session +') }}</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -80,22 +77,5 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function ordenarTabla(columna) {
-        // Realizar una solicitud AJAX al servidor para ordenar los datos
-        axios.get('perro/ordenar', {
-            params: {
-                columna: columna
-            }
-        })
-        .then(response => {
-            // Actualizar el contenido de la tabla con los datos ordenados recibidos del servidor
-            document.getElementById('cuerpoTabla').innerHTML = response.data;
-        })
-        .catch(error => {
-            console.error('Error al ordenar la tabla:', error);
-        });
-    }
-    </script>
+
 </x-app-layout>
