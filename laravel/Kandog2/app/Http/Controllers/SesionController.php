@@ -20,7 +20,7 @@ class SesionController extends Controller
         return view('sesion.index', ['sesiones' => $sesiones]);
     }
 
-    public function createSesion(string $id)
+    public function createSesion($id)
     {
         $perro = Perro::find($id);
         return view('sesion.create', ['perro'=>$perro]);

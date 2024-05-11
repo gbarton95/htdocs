@@ -116,10 +116,9 @@
                         </div>
                     </div>
                 </div>
-
-                <x-footer></x-footer>
             </div>
         </div>
+        <x-footer></x-footer>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </body>
 </html>
