@@ -26,7 +26,9 @@ return new class extends Migration
             $table->string('tutor_apellidos')->nullable(); 
             $table->string('telefono', 15);
             $table->string('email')->nullable();
-            $table->string('codigo_postal')->nullable();
+            $table->integer('codigo_postal')->nullable();
+            $table->string('calle')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();           
         });
     }

@@ -8,15 +8,15 @@
 }
 
 .btn-primary {
-    background-color: #f4b325;
-    border: 2px solid #f4b325;
+    background-color: #00a727;
+    border: 2px solid #00a727;
     color: black;
     transition: 0.5s;
 }
 
 .btn-primary:hover{
-    background-color: orange;
-    border: 2px solid #f4b325;
+    background-color: #08bd32;
+    border: 2px solid #08bd32;
     color: black;
     font-weight: 800;
 }

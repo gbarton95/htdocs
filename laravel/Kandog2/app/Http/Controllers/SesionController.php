@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Sesion;
 use App\Models\Perro;
-
-
+use Illuminate\Support\Facades\Session;
 
 class SesionController extends Controller
 {
@@ -15,9 +14,9 @@ class SesionController extends Controller
     {
         $user = auth()->user();
         $sesiones = Sesion::where('user_id', $user->id)
-            ->where('inicio')
             ->orderBy('inicio')    
             ->get();
+        
         return view('sesion.index', ['sesiones' => $sesiones]);
     }
 
@@ -27,28 +26,33 @@ class SesionController extends Controller
         return view('sesion.create', ['perro'=>$perro]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $sesion = new Sesion();
+        $user = auth()->user()->id;
+
+        $sesion->user_id = $user;
+        $sesion->perro_id = $request->perro_id;
+        $sesion->asunto = $request->asunto;
+        $sesion->ubicacion = $request->ubicacion;
+        $sesion->inicio = $request->inicio;
+        $sesion->duracion = $request->duracion;
+        $sesion->done = false;
+
+        $sesion->save();
+
+        return redirect()->route('sesion.index')->with('success', 'La sesión ha sido creada.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        
+        
     }
 
     /**

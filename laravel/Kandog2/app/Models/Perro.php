@@ -31,7 +31,9 @@ class Perro extends Model
         'tutor_apellidos',
         'telefono',
         'email',
-        'codigo_postal'
+        'codigo_postal',
+        'calle',
+        'active'
     ];
 
     public function user()

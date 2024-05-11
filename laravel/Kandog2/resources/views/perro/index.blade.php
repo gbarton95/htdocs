@@ -58,7 +58,7 @@
                                     <td class="d-none d-sm-table-cell">{{ $perro->telefono }}</td>
                                     <td class="text-center">
                                         <div class="mb-1">
-                                            <a href="{{ route('perro.edit', $perro->id) }}" class="btn btn-primary btn-sm w-100">{{ __('Edit') }}</a>
+                                            <a href="{{ route('perro.edit', $perro->id) }}" class="btn btn-warning btn-sm w-100">{{ __('Edit') }}</a>
                                         </div>
                                         <form action="{{ route('perro.destroy', $perro->id) }}" method="post">
                                             @csrf

@@ -41,9 +41,13 @@
                             <option value="1">Sí</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
-                        <label for="codigo_postal" class="form-label">{{ __('Postal Code - Location') }}</label>
-                        <input type="text" class="form-control" id="codigo_postal" name="codigo_postal">
+                    <div class="col-md-3">
+                        <label for="codigo_postal" class="form-label">{{ __('Postal Code') }}</label>
+                        <input type="number" class="form-control" id="codigo_postal" name="codigo_postal">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="calle" class="form-label">{{ __('Location') }}</label>
+                        <input type="text" class="form-control" id="calle" name="calle">
                     </div>
                     <div class="col-md-3">
                         <label for="tutor_nombre" class="form-label">{{ __('Owner\'s name') }}*</label>
