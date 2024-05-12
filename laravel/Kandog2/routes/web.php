@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PerroController;
 use App\Http\Controllers\SesionController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,9 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('sesiones', 'SesionController@index')->middleware(['auth', 'verified'])->name('calendario');
+//Repositorio de archivos
+Route::get('archivos', [FileController::class, 'create'])->middleware(['auth', 'verified'])->name('file.create');
+Route::post('archivos/crear', [FileController::class, 'store'])->middleware(['auth', 'verified'])->name('file.store');
+Route::get('archivo/descargar/{file}', [FileController::class, 'download'])->middleware(['auth', 'verified'])->name('file.download');
 
 //Rutas de sesiones
+Route::get('sesiones', 'SesionController@index')->middleware(['auth', 'verified'])->name('calendario');
 Route::post('sesion/buscar', [SesionController::class, 'search'])->middleware(['auth', 'verified'])->name('sesion.search');
 Route::get('sesion/create/{id}', 'SesionController@createSesion')->middleware(['auth', 'verified'])->name('sesion.create2');
 Route::resource('sesion', SesionController::class)->middleware(['auth', 'verified']);

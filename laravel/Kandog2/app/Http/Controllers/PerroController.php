@@ -14,7 +14,7 @@ class PerroController extends Controller
         $buscar = false;
         $perros = Perro::where('user_id', $user->id)
             ->where('active', '1')
-            ->get();
+            ->paginate(10);
         return view('perro.index', ['perros' => $perros, 'buscar'=>$buscar]);
     }
 
@@ -30,8 +30,9 @@ class PerroController extends Controller
                 $query->where('nombre', 'LIKE', '%' . $userRequest . '%')
                     ->orWhere('telefono', 'LIKE', '%' . $userRequest . '%')
                     ->orWhere('tutor_nombre', 'LIKE', '%' . $userRequest . '%');
+                    
              })
-            ->get();
+            ->paginate(10);
         return view('perro.index', ['perros'=>$perros, 'buscar'=>$buscar]);
     }
    
