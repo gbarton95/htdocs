@@ -14,6 +14,7 @@ class SesionController extends Controller
     {
         $user = auth()->user();
         $sesiones = Sesion::where('user_id', $user->id)
+            ->where('active', '1')
             ->orderBy('inicio')    
             ->get();
         
@@ -80,6 +81,9 @@ class SesionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $sesion = Sesion::find($id);
+        $sesion->active=false;
+        $sesion->save();
+        return redirect()->route('sesion.index')->with('success', 'Sesión eliminada con éxito.');
     }
 }

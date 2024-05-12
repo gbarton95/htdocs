@@ -46,6 +46,7 @@
                                 <th class="d-none d-md-table-cell" onclick="ordenarTabla('raza')" scope="col">{{__('Breed')}}</th>
                                 <th onclick="ordenarTabla('tutor_nombre')" scope="col">{{__('Owner')}}</th>
                                 <th class="d-none d-sm-table-cell" scope="col">{{__('Phone number')}}</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla">

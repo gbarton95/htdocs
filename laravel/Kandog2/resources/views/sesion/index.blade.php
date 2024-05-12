@@ -44,6 +44,7 @@
                                             <th scope="col">{{ __('Location') }}</th>
                                             <th scope="col">{{ __('Date') }}</th>
                                             <th scope="col">{{ __('Duration') }}</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -53,9 +54,19 @@
                                                     <td>{{ $sesion->perro->nombre }}</td>
                                                     <td>{{ $sesion->perro->tutor_nombre }}
                                                         {{ $sesion->perro->tutor_apellidos }}</td>
-                                                    <td>{{ $sesion->calle }}</td>
+                                                    <td>{{ $sesion->ubicacion }}</td>
                                                     <td>{{ $sesion->inicio }}</td>
                                                     <td>{{ $sesion->duracion }} {{ __('minutes') }}</td>
+                                                    <td class="text-center">
+                                                        <div class="mb-1">
+                                                            <a href="{{ route('sesion.edit', $sesion->id) }}" class="btn btn-warning btn-sm w-100">{{ __('Edit') }}</a>
+                                                        </div>
+                                                        <form action="{{ route('sesion.destroy', $sesion->id) }}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm w-100 h-80">{{ __('Delete') }}</button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -84,9 +95,19 @@
                                                     <td>{{ $sesion->perro->nombre }}</td>
                                                     <td>{{ $sesion->perro->tutor_nombre }}
                                                         {{ $sesion->perro->tutor_apellidos }}</td>
-                                                    <td>{{ $sesion->calle }}</td>
+                                                    <td>{{ $sesion->ubicacion }}</td>
                                                     <td>{{ $sesion->inicio }}</td>
                                                     <td>{{ $sesion->duracion }} {{ __('minutes') }}</td>
+                                                    <td class="text-center">
+                                                        <div class="mb-1">
+                                                            <a href="{{ route('sesion.edit', $sesion->id) }}" class="btn btn-warning btn-sm w-100">{{ __('Edit') }}</a>
+                                                        </div>
+                                                        <form action="{{ route('sesion.destroy', $sesion->id) }}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm w-100 h-80">{{ __('Delete') }}</button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endif
                                         @endforeach
