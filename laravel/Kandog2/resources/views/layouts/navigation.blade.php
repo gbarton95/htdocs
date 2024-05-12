@@ -17,13 +17,13 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('perro.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('perro.index')" :active="request()->routeIs('perro.index')">
                         {{ __('Dogs') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('calendario')" :active="request()->routeIs('calendario')">
-                        {{ __('Sesions') }}
+                        {{ __('Sessions') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

@@ -42,6 +42,14 @@
     object-fit: cover;
 }
 
+.page-item {
+    width: 50px;
+    text-align: center;
+}
+
+.pagination {
+}
+
 /*COLORES*/
 
 .personal-bg-orange {

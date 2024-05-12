@@ -85,7 +85,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div>{{ $perros->links() }}</div>
+                    <div class="d-flex justify-center justify-content-md-end">{{ $perros->links() }}</div>
                 </div>
             </div>
         </div>
