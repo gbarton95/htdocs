@@ -1,12 +1,12 @@
 <div class="container-fluid">
-    <div class="text-m text-gray-800 dark:text-gray-400 row">
-        <div class="text-center text-md-end col-12 col-sm-3 mb-2">
+    <div class="text-m text-gray-800 dark:text-gray-400 row mt-1">
+        <div class="text-center align-self-center text-md-end col-12 col-sm-3">
             <p>Kandog © 2024</p>
         </div>
 
 
 
-        <div class="flex-column flex-sm-row mb-2 d-flex col-12 col-sm-9 mx-0 justify-content-center">
+        <div class="flex-column flex-sm-row mb-2 d-flex col-12 col-sm-9 mx-0 justify-content-center align-middle">
             <button type="button" class="boton-foot" data-bs-toggle="modal" data-bs-target="#modalAvisoLegal">
                 {{ __('Legal warning') }}
             </button>
@@ -249,7 +249,7 @@
                 </div>
             </div>
     
-            <button type="button" class="boton-foot" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">
+            <button type="button" class="boton-foot align-self-center" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">
                 {{ __('Privacy Policy') }}
             </button>
             <!-- Modal politica privacidad-->
@@ -649,7 +649,7 @@
                 </div>
             </div>
     
-            <button type="button" class="boton-foot" data-bs-toggle="modal" data-bs-target="#modalCookies">
+            <button type="button" class="boton-foot align-self-center" data-bs-toggle="modal" data-bs-target="#modalCookies">
                 {{ __('Cookies policy') }}
             </button>
             <!-- Modal politica cookies-->
@@ -1069,7 +1069,7 @@
                 </div>
             </div>
     
-            <button type="button" class="boton-foot" data-bs-toggle="modal" data-bs-target="#modalCondicionesVenta">
+            <button type="button" class="boton-foot align-self-center" data-bs-toggle="modal" data-bs-target="#modalCondicionesVenta">
                 {{ __('Terms of sale') }}
             </button>
             <!-- Modal condiciones venta-->

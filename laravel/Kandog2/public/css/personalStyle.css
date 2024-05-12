@@ -31,9 +31,9 @@
 
 .boton-foot {
     padding: 0;
+    padding-top: 5px;
     padding-left: 20px;
     margin: 0;
-    margin-bottom: 10px;
 }
 
 .carousel-item img {
@@ -47,13 +47,25 @@
     text-align: center;
 }
 
-.pagination {
+#carruselPortada {
+    max-height: 80vh;
 }
+
+#carruselPortada img {
+    width: 100%;
+    min-height: 65vh;
+}
+
+
 
 /*COLORES*/
 
 .personal-bg-orange {
     background-color: #f4b325;
+}
+
+.personal-bg-yellow {
+    background-color: rgb(240, 240, 135);
 }
 
 .blanco-transparente {
