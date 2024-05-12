@@ -22,19 +22,31 @@ class SesionController extends Controller
 
     public function createSesion($id)
     {
+        $user = auth()->user();
         $perro = Perro::find($id);
-        return view('sesion.create', ['perro'=>$perro]);
+        $sesionesTotales = DB::table('sesiones')
+            ->where('user_id', $user->id)
+            ->where('active', '1')
+            ->where('perro_id', $id)
+            ->count();
+        return view('sesion.create', ['perro' => $perro, 'sesionesTotales' => $sesionesTotales]);
     }
 
     public function store(Request $request)
     {
         $sesion = new Sesion();
         $user = auth()->user()->id;
+        $id = $request->perro_id;
+        $perro = Perro::find($id);
 
         $sesion->user_id = $user;
-        $sesion->perro_id = $request->perro_id;
+        $sesion->perro_id = $perro->id;
         $sesion->asunto = $request->asunto;
-        $sesion->ubicacion = $request->ubicacion;
+        if ($request->locationOption === 'same') {
+            $sesion->ubicacion = $perro->calle;
+        } else {
+            $sesion->ubicacion = $request->otherLocation;
+        }    
         $sesion->inicio = $request->inicio;
         $sesion->duracion = $request->duracion;
         $sesion->done = false;
