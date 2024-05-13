@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid footer">
     <div class="text-m text-gray-800 dark:text-gray-400 row mt-1">
         <div class="text-center align-self-center text-md-end col-12 col-sm-3">
             <p>Kandog © 2024</p>

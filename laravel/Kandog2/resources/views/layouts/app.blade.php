@@ -20,8 +20,8 @@
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased fondo-huesos min-h-screen">
-        <div class=" dark:bg-gray-900">
+    <body class="font-sans antialiased fondo-huesos d-flex flex-col justify-between min-h-screen">
+        <div class="dark:bg-gray-900 h-100">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
