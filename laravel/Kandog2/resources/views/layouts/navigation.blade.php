@@ -90,6 +90,15 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('perro.index')" :active="request()->routeIs('perro.index')">
+                {{ __('Dogs') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('calendario')" :active="request()->routeIs('calendario')">
+                {{ __('Sessions') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('file.create')" :active="request()->routeIs('file.create')">
+                {{ __('Resources') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -100,7 +109,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 

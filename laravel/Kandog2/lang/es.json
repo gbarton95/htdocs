@@ -216,6 +216,7 @@
         "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.": 
         "¡Gracias por registrarte! Antes de comenzar, ¿podrías verificar la dirección de correo electrónico haciendo clic en el enlace que te acabamos de enviar? Si no lo has recibido, te enviamos otro sin problema.",
     "Terms of sale": "Condiciones",
+    "Today": "Hoy",
     "Too Early": "Demasiado pronto",
     "Too Many Requests": "Demasiadas solicitudes",
     "Translate": "Traducir",
@@ -237,13 +238,22 @@
     "Variant Also Negotiates": "Variante También Negocia",
     "View": "Ver",
     "View :name": "Ver :name",
+    "Warning": "Alerta",
     "Web Server is Down": "El servidor web está caído",
     "Weight": "Peso",
+    "Welcome": "Hola",
     "Where?": "¿Dónde?",
     "Yes": "Sí",
     "Yes, same location": "Sí, voy a su casa",
     "You don't have any sessions yet": "Aún no tienes sesiones",
     "Your dogs": "Tus perros",
+
+    "No weather data available": "No hay datos sobre el clima",
+    "Tomorrow's going to rain!": "Mañana dan lluvias",
+    "Beware the wind!": "¡Cuidado con el aire!",
+    "Today we are reaching": "Hoy alcanzamos los",
+    "Very windy today!": "¡Cuidado, mucho aire hoy!",
+    
 
     "Profile Information": "Información del perfil",
     "Update your account's profile information and email address.": "Actualiza la información del perfil y la dirección de correo electrónico de tu cuenta.",
