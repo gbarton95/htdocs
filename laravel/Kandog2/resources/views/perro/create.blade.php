@@ -22,6 +22,7 @@
                     <div class="col-md-2">
                         <label for="sexo" class="form-label">{{ __('Sex') }}</label>
                         <select id="sexo" class="form-select" name="sexo">
+                            <option value="none">-------</option>
                             <option value="Macho">Macho</option>
                             <option value="Hembra">Hembra</option>
                         </select>

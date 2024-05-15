@@ -17,7 +17,7 @@ return new class extends Migration
                         ->onDelete('cascade');
             $table->string('nombre', 30);
             $table->string('edad');
-            $table->enum('sexo', ['Macho', 'Hembra']);
+            $table->enum('sexo', ['none', 'Macho', 'Hembra']);
             $table->string('raza')->nullable();
             $table->integer('peso')->nullable();
             $table->boolean('PPP')->default(false);
