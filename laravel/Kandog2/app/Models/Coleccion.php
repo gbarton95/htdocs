@@ -18,8 +18,10 @@ class Coleccion extends Model
     ];
 
     protected $fillable = [
-        'file_id',
-        'nombre'
+        'user_id',
+        'nombre',
+        'descripcion',
+        'imagenCabecera'
     ];
     
     public function files()

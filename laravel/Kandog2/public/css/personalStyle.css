@@ -71,8 +71,6 @@ body {
     min-height: 65vh;
 }
 
-
-
 /*COLORES*/
 
 .asleep {
@@ -87,6 +85,11 @@ body {
 
 .personal-bg-yellow {
     background-color: rgb(240, 240, 135);
+}
+
+.personal-card-header{
+    background-color: #f1fd449f;
+    font-weight: bold;
 }
 
 .blanco-transparente {

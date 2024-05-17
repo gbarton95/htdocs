@@ -12,7 +12,7 @@
                 <section style="background-color: #eeeeee;">
                     <div class="container py-3">                  
                       <div class="row">
-                        <div class="col-lg-4"><!--Ficha perro-->
+                        <div class="col-lg-4 text-center"><!--Ficha perro-->
                           <div class="card mb-4">
                             <div class="card-body text-center" style="position: relative">
                               @if($perro->PPP==1)

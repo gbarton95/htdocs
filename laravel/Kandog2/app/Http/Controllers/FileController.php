@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\Coleccion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class FileController extends Controller
 {
-    // Método para mostrar el formulario de carga de archivos
-    public function create()
-    {
+   
+    public function index() {
         $files = File::all();
-        return view('file.create', compact('files'));
+        $colecciones = Coleccion::all();
+        // dd($colecciones);
+        return view('file.index', compact('files', 'colecciones'));
     }
      
     public function store(Request $request)
@@ -28,7 +30,7 @@ class FileController extends Controller
         // Crea un nuevo registro en la base de datos
         $file = new File();
         $file->user_id = auth()->id(); 
-        $file->perro_id = "1"; //;
+        $file->perro_id = $request->input('perro_id', null);
         if($request->filled('filename')) {
            $file->filename = $request->input('filename');
         } else {
@@ -37,13 +39,35 @@ class FileController extends Controller
 
         $file->type = $request->file('file')->getClientMimeType();
         $file->path = $path;
-        $file->coleccion = ""; //;
+        $file->coleccion = $request->input('coleccion', null);
         $file->active = true;
         
         $file->save();
 
-        return back()->with('success', 'Archivo subido exitosamente.');
+        return back();
     }
+
+    public function storeCollection(Request $request) {
+        $user = auth()->user();
+    
+        $coleccion = new Coleccion();
+        $coleccion->user_id = $user->id;
+        $coleccion->nombre = $request->input('nombre');
+        $coleccion->descripcion = $request->input('descripcion');
+
+        if ($request->filled('imagenCabecera')) {
+            $coleccion->imagenCabecera = $request->input('imagenCabecera');
+        } else {
+            $coleccion->imagenCabecera = "images/collectionIcon.webp";
+        }
+
+        $coleccion->fill($request->all());
+
+        $coleccion->save();
+
+        return back();
+    }
+
 
     // Método para descargar un archivo
     public function download(File $file)

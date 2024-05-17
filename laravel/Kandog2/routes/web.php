@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //Repositorio de archivos
-Route::get('archivos', [FileController::class, 'create'])->middleware(['auth', 'verified'])->name('file.create');
+Route::get('archivos', [FileController::class, 'index'])->middleware(['auth', 'verified'])->name('file.index');
 Route::post('archivos/crear', [FileController::class, 'store'])->middleware(['auth', 'verified'])->name('file.store');
 Route::get('archivo/descargar/{file}', [FileController::class, 'download'])->middleware(['auth', 'verified'])->name('file.download');
 

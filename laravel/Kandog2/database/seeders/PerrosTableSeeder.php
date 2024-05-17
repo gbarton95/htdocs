@@ -374,3 +374,5 @@ class PerrosTableSeeder extends Seeder
 
     }
 }
+
+?>
