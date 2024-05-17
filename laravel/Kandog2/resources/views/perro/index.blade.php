@@ -73,9 +73,16 @@
                                         <form action="{{ route('perro.destroy', $perro->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"
+                                            <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModalS{{ $perro->id }}"
                                                 class="btn btn-danger btn-sm w-100 h-80 asleep">{{ __('Delete') }}</button>
                                         </form>
+                                        <x-modal-borrar id="deleteModalS{{ $perro->id }}"
+                                            title="{{__('Delete dog')}}" confirmText="{{__('Delete')}}">
+                                            <span style="color: red">{{strtoupper(__("Warning"))}}</span>: {{__("You are going to delete")}}  <b>{{$perro->nombre}}</b><br>
+                                            {{__("Owner")}}: {{$perro->tutor_nombre}} {{$perro->tutor_apellidos}}.<br>
+                                            {{__("Are you sure?")}}
+                                        </x-modal-borrar>
                                         <div class="mt-1">
                                             <a href="{{ route('sesion.create2', $perro->id) }}"
                                                 class="btn btn-success btn-sm w-100 asleep">{{ __('Session +') }}</a>

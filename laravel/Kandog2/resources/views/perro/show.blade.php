@@ -15,7 +15,7 @@
                         <div class="col-lg-4"><!--Ficha perro-->
                           <div class="card mb-4">
                             <div class="card-body text-center" style="position: relative">
-                              @if($perro->PPP==0)
+                              @if($perro->PPP==1)
                                 <img src="{{asset('images/PPP.png')}}" alt="avatarPerro"
                                 class="img-fluid" style="width: 20%; position: absolute;">
                               @endif

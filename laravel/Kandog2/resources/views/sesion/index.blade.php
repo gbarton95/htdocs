@@ -50,7 +50,7 @@
                                     <tbody>
                                         @foreach ($sesiones as $sesion)
                                             @if ($sesion->inicio > now())
-                                                <tr class="">
+                                                <tr>
                                                     <td>{{ $sesion->perro->nombre }}</td>
                                                     <td>{{ $sesion->perro->tutor_nombre }}
                                                         {{ $sesion->perro->tutor_apellidos }}</td>
@@ -59,13 +59,24 @@
                                                     <td>{{ $sesion->duracion }} {{ __('minutes') }}</td>
                                                     <td class="text-center">
                                                         <div class="mb-1">
-                                                            <a href="{{ route('sesion.edit', $sesion->id) }}" class="btn btn-warning btn-sm w-100">{{ __('Edit') }}</a>
+                                                            <a href="{{ route('sesion.edit', $sesion->id) }}"
+                                                                class="btn btn-warning btn-sm w-100 asleep">{{ __('Edit') }}</a>
                                                         </div>
-                                                        <form action="{{ route('sesion.destroy', $sesion->id) }}" method="post">
+                                                        <form id="deleteForm{{ $sesion->id }}"
+                                                            action="{{ route('sesion.destroy', $sesion->id) }}"
+                                                            method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm w-100 h-80">{{ __('Delete') }}</button>
+                                                            <button type="button" data-bs-toggle="modal"
+                                                                data-bs-target="#deleteModalS{{ $sesion->id }}"
+                                                                class="btn btn-danger btn-sm w-100 h-80 asleep">{{ __('Delete') }}</button>
                                                         </form>
+                                                        <x-modal-borrar id="deleteModalS{{ $sesion->id }}"
+                                                            title="{{__('Delete session')}}" confirmText="{{__('Delete')}}">
+                                                            {{__("You are going to delete a session with")}} {{$sesion->perro->nombre}}<br>
+                                                            {{$sesion->inicio}}, {{$sesion->ubicacion}}.<br>
+                                                            {{__("Are you sure?")}}
+                                                        </x-modal-borrar>
                                                     </td>
                                                 </tr>
                                             @endif
@@ -77,7 +88,7 @@
 
                         <!--SESIONES PASADAS ('DONE')-->
                         <div class="tab-pane fade" id="lastsession" role="tabpanel" aria-labelledby="lastsession-tab">
-                            <div class="pt-4">                                
+                            <div class="pt-4">
                                 <table id="tablaVerSesiones" class="table table-striped table-bordered align-middle">
                                     <thead class="thead-dark">
                                         <tr>
@@ -100,13 +111,23 @@
                                                     <td>{{ $sesion->duracion }} {{ __('minutes') }}</td>
                                                     <td class="text-center">
                                                         <div class="mb-1">
-                                                            <a href="{{ route('sesion.edit', $sesion->id) }}" class="btn btn-warning btn-sm w-100">{{ __('Edit') }}</a>
+                                                            <a href="{{ route('sesion.edit', $sesion->id) }}"
+                                                                class="btn btn-warning btn-sm w-100 asleep">{{ __('Edit') }}</a>
                                                         </div>
-                                                        <form action="{{ route('sesion.destroy', $sesion->id) }}" method="post">
+                                                        <form action="{{ route('sesion.destroy', $sesion->id) }}"
+                                                            method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm w-100 h-80">{{ __('Delete') }}</button>
+                                                            <button type="button" data-bs-toggle="modal"
+                                                            data-bs-target="#deleteModalS{{ $sesion->id }}"
+                                                                class="btn btn-danger btn-sm w-100 h-80 asleep">{{ __('Delete') }}</button>
                                                         </form>
+                                                        <x-modal-borrar id="deleteModalS{{ $sesion->id }}"
+                                                            title="{{__('Delete session')}}" confirmText="{{__('Delete')}}">
+                                                            {{__("You are going to delete a session with")}} {{$sesion->perro->nombre}}<br>
+                                                            {{$sesion->inicio}}, {{$sesion->ubicacion}}.<br>
+                                                            {{__("Are you sure?")}}
+                                                        </x-modal-borrar>
                                                     </td>
                                                 </tr>
                                             @endif
@@ -120,5 +141,15 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('[id^="deleteModalS"]').forEach(function(modal) {
+                const modalId = modal.getAttribute('id');
+                const formId = 'deleteForm' + modalId.replace('deleteModalS', '');
+                document.getElementById(modalId + 'ConfirmButton').addEventListener('click', function () {
+                    document.getElementById(formId).submit();
+                });
+            });
+        });
+    </script>
 </x-app-layout>
