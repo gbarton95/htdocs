@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit ') }}{{ $perro->nombre }}
+            {{ __('Profile of ') }}{{ $perro->nombre }}
         </h2>
     </x-slot>
 
@@ -43,9 +43,9 @@
 
                         <div class="col-lg-8">
                           <div class="card mb-4">
-                            <div class="card-body">
+                            <div class="card-body"><!--Ficha propi-->
                               <div class="row">
-                                <div class="col-sm-4"><!--Ficha propi-->
+                                <div class="col-sm-4">
                                   <p class="mb-0">{{__('Owner')}}</p>
                                 </div>
                                 <div class="col-sm-8">
@@ -82,7 +82,7 @@
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6"><!--ficha1 sesiones-->
                               <div class="card mb-4 mb-md-0">
                                 <div class="card-body">
                                   <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
@@ -115,7 +115,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6"><!--ficha2 recursos-->
                               <div class="card mb-4 mb-md-0">
                                 <div class="card-body">
                                   <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status

@@ -11,41 +11,41 @@
                 <div class="p-6 container-fluid"> <!--Contenedor blanco-->
                     <div class="row justify-center">
                     
-                        <div class="col-12 col-lg-9 col-xl-10">
+                        <div class="col-12 col-lg-9 col-xl-19">
                             <span class="display-2">{{__('Welcome')}}, {{$username}}</span>
                         </div>
                         <!--API DEL TIEMPO-->
                         @if($hoy)
-                            <div class="col-10 col-sm-6  col-md-6 col-lg-3 col-xl-2 d-flex flex-col m-3 m-lg-0 cajaTiempo">
+                            <div class="col-10 col-sm-6 col-md-6 col-lg-3 col-xl-3 d-flex flex-col m-3 m-lg-0 cajaTiempo">
                                 <span class="text-left" style="font-size: 20px;">{{ __('Today') }}:</span>
-                                <div class="d-flex">
+                                <div class="d-flex justify-center">
                                     <img class="col-6" src="{{ $hoy['icono'] }}" alt="icono de hoy" style="max-width: 120px; max-height:80px;">
                                     <div class="col-6">
                                         <p>Zaragoza</p>
                                         <p>{{ $hoy['temp'] }} ºC</p>
                                         <p>{{ $hoy['viento'] }} km/h</p>
                                     </div>
-                                    <!--Avisos si los hubiera de calor>30ºC, aire>50km/h o lluvias mañana-->
-                                    @if($maxTemp)
-                                        <div class="col-12 d-flex p-0">
-                                            <img src="{{asset('images/alertIconSm.png')}}" style="height: 25px; margin-right:2px;">
-                                            <p>{{__("Today we are reaching")}} {{$maxTemp}}ºC </p>
-                                        </div>
-                                    @endif
-                                    @if($windy)
-                                        <div class="col-12 d-flex p-0">
-                                            <img src="{{asset('images/alertIconSm.png')}}" style="height: 25px; margin-right:2px;">
-                                            <p>{{__($windy)}} </p>
-                                        </div>
-                                    @endif
-                                    @if($lluviaTomorrow)
-                                        <div class="col-12 d-flex p-0">
-                                            <img src="{{asset('images/alertIconSm.png')}}" style="height: 25px; margin-right:2px;">
-                                            <p>{{__('Warning')}}: {{__($lluviaTomorrow)}} </p>
-                                        </div>
-                                    @endif
-                                    <!--Fin avisos-->
                                 </div>
+                                    <!--Avisos si los hubiera de calor>30ºC, aire>50km/h o lluvias mañana-->
+                                @if($maxTemp)
+                                    <div class="col-12 d-flex p-0 justify-center">
+                                        <img src="{{asset('images/alertIconSm.png')}}" style="height: 25px; margin-right:2px;">
+                                        <p>{{__("Today we are reaching")}} {{$maxTemp}}ºC </p>
+                                    </div>
+                                @endif
+                                @if($windy)
+                                    <div class="col-12 d-flex p-0 justify-center">
+                                        <img src="{{asset('images/alertIconSm.png')}}" style="height: 25px; margin-right:2px;">
+                                        <p>{{__($windy)}} </p>
+                                    </div>
+                                @endif
+                                @if($lluviaTomorrow)
+                                    <div class="col-12 d-flex p-0 justify-center">
+                                        <img src="{{asset('images/alertIconSm.png')}}" style="height: 25px; margin-right:2px;">
+                                        <p>{{__('Warning')}}: {{__($lluviaTomorrow)}} </p>
+                                    </div>
+                                @endif
+                                <!--Fin avisos-->
                             </div>
                         @else
                             <div class="col-12 col-sm-10  col-md-8 col-lg-3 col-xl-2 d-flex flex-col m-3 m-sm-0 cajaTiempo">

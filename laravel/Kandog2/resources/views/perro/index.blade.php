@@ -68,17 +68,17 @@
                                     <td class="text-center">
                                         <div class="mb-1">
                                             <a href="{{ route('perro.edit', $perro->id) }}"
-                                                class="btn btn-warning btn-sm w-100">{{ __('Edit') }}</a>
+                                                class="btn btn-warning btn-sm w-100 asleep">{{ __('Edit') }}</a>
                                         </div>
                                         <form action="{{ route('perro.destroy', $perro->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
-                                                class="btn btn-danger btn-sm w-100 h-80">{{ __('Delete') }}</button>
+                                                class="btn btn-danger btn-sm w-100 h-80 asleep">{{ __('Delete') }}</button>
                                         </form>
                                         <div class="mt-1">
                                             <a href="{{ route('sesion.create2', $perro->id) }}"
-                                                class="btn btn-success btn-sm w-100">{{ __('Session +') }}</a>
+                                                class="btn btn-success btn-sm w-100 asleep">{{ __('Session +') }}</a>
                                         </div>
                                     </td>
                                 </tr>
