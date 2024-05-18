@@ -70,13 +70,15 @@
                                                             <button type="button" data-bs-toggle="modal"
                                                                 data-bs-target="#deleteModalS{{ $sesion->id }}"
                                                                 class="btn btn-danger btn-sm w-100 h-80 asleep">{{ __('Delete') }}</button>
+                                                            <x-modal-borrar id="deleteModalS{{ $sesion->id }}"
+                                                                title="{{ __('Delete session') }}"
+                                                                confirmText="{{ __('Delete') }}">
+                                                                {{ __('You are going to delete a session with') }}
+                                                                {{ $sesion->perro->nombre }}<br>
+                                                                {{ $sesion->inicio }}, {{ $sesion->ubicacion }}.<br>
+                                                                {{ __('Are you sure?') }}
+                                                            </x-modal-borrar>
                                                         </form>
-                                                        <x-modal-borrar id="deleteModalS{{ $sesion->id }}"
-                                                            title="{{__('Delete session')}}" confirmText="{{__('Delete')}}">
-                                                            {{__("You are going to delete a session with")}} {{$sesion->perro->nombre}}<br>
-                                                            {{$sesion->inicio}}, {{$sesion->ubicacion}}.<br>
-                                                            {{__("Are you sure?")}}
-                                                        </x-modal-borrar>
                                                     </td>
                                                 </tr>
                                             @endif
@@ -114,20 +116,22 @@
                                                             <a href="{{ route('sesion.edit', $sesion->id) }}"
                                                                 class="btn btn-warning btn-sm w-100 asleep">{{ __('Edit') }}</a>
                                                         </div>
-                                                        <form action="{{ route('sesion.destroy', $sesion->id) }}"
+                                                        <form id="deleteForm{{ $sesion->id }}" action="{{ route('sesion.destroy', $sesion->id) }}"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="button" data-bs-toggle="modal"
-                                                            data-bs-target="#deleteModalS{{ $sesion->id }}"
+                                                                data-bs-target="#deleteModalS{{ $sesion->id }}"
                                                                 class="btn btn-danger btn-sm w-100 h-80 asleep">{{ __('Delete') }}</button>
+                                                            <x-modal-borrar id="deleteModalS{{ $sesion->id }}"
+                                                                title="{{ __('Delete session') }}"
+                                                                confirmText="{{ __('Delete') }}">
+                                                                {{ __('You are going to delete a session with') }}
+                                                                {{ $sesion->perro->nombre }}<br>
+                                                                {{ $sesion->inicio }}, {{ $sesion->ubicacion }}.<br>
+                                                                {{ __('Are you sure?') }}
+                                                            </x-modal-borrar>
                                                         </form>
-                                                        <x-modal-borrar id="deleteModalS{{ $sesion->id }}"
-                                                            title="{{__('Delete session')}}" confirmText="{{__('Delete')}}">
-                                                            {{__("You are going to delete a session with")}} {{$sesion->perro->nombre}}<br>
-                                                            {{$sesion->inicio}}, {{$sesion->ubicacion}}.<br>
-                                                            {{__("Are you sure?")}}
-                                                        </x-modal-borrar>
                                                     </td>
                                                 </tr>
                                             @endif
@@ -141,15 +145,4 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('[id^="deleteModalS"]').forEach(function(modal) {
-                const modalId = modal.getAttribute('id');
-                const formId = 'deleteForm' + modalId.replace('deleteModalS', '');
-                document.getElementById(modalId + 'ConfirmButton').addEventListener('click', function () {
-                    document.getElementById(formId).submit();
-                });
-            });
-        });
-    </script>
 </x-app-layout>
