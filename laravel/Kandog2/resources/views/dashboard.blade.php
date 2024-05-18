@@ -19,7 +19,7 @@
                             <div class="col-10 col-sm-6 col-md-6 col-lg-3 col-xl-3 d-flex flex-col m-3 m-lg-0 cajaTiempo">
                                 <span class="text-left" style="font-size: 20px;">{{ __('Today') }}:</span>
                                 <div class="d-flex justify-center">
-                                    <img class="col-6" src="{{ $hoy['icono'] }}" alt="icono de hoy" style="max-width: 120px; max-height:80px;">
+                                    <img class="col-6" src="{{ $hoy['icono'] }}" alt="icono de hoy" style="max-width: 100px; max-height:80px;">
                                     <div class="col-6">
                                         <p>Zaragoza</p>
                                         <p>{{ $hoy['temp'] }} ºC</p>

@@ -9,6 +9,11 @@
         </p>
     </header>
 
+    <div class="container-fluid d-flex align-items-center justify-content-end">
+        <img src="{{ asset('images/us-flag.png') }}" alt="{{ __('English') }}" class="btn img-fluid" style="max-height: 65%;">
+        <img src="{{ asset('images/sp-flag.png') }}" alt="{{ __('English') }}" class="btn img-fluid" style="max-height: 65%;">
+    </div>
+
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>

@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 md:-my-px md:ms-10 md:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -36,11 +36,6 @@
                         {{ __('Help') }}
                     </x-nav-link>
                 </div> --}} 
-            </div>
-
-            <div class="container-fluid d-flex align-items-center justify-content-end">
-                <img src="{{ asset('images/us-flag.png') }}" alt="{{ __('English') }}" class="btn img-fluid" style="max-height: 65%;">
-                <img src="{{ asset('images/sp-flag.png') }}" alt="{{ __('English') }}" class="btn img-fluid" style="max-height: 65%;">
             </div>
                 
             <!-- Settings Dropdown -->
